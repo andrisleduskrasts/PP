@@ -1,0 +1,195 @@
+/**********************************************************************************
+
+Dokumentos veikta pieturzīmju palīga izstrāde, kura seko šajā failā aprakstītajai struktūrai (ar novirzēm).
+
+Ja darba gaitā ir nepieciešams veikt izmaiņas realizacijas struktūrā, tiek veiktas izmaiņas attiecīgi arī šajā failā.
+
+/******** Pirmā veida gadījumi ************/
+
+/**** z-tais gadījums ****/
+Gadījuma _funkcija(){
+	Nosacījums
+	...
+	Nosacījums
+	...
+	Izpilde
+}
+/** Apskatītā gadījuma apraksts**/
+
+/**** kāds cits nesaistīts gadījums ****/
+
+Gadījuma_funkcija2(){
+	Nosacījums
+	...
+	Nosacījums
+	...
+	Izpilde
+}
+/** Apskatītā gadījuma apraksts **/
+
+/******** Otrā veida gadījumi ************/
+
+.....
+.....
+
+
+main(){
+	vārda_ielasīšana
+	parbaude (piemēram, vai nav kāda pieturzīme, nevis vārds)
+	parbaude (piemēram, vai teksts nebeidzas, vai sākas vārds, vai nav dubultu pieturzīmju u.c. - nodrošina programmas darbības beigas)
+	vārda_atpazīšana
+	vārdam_atbilstošās_funkcijas_izsaukums
+	sākt no sākuma
+}
+
+/**********************************************************************************
+
+Pseidokods minētajam šablonam ar reāliem piemēriem(likumiem)
+
+**********************************************************************************/
+
+
+/** Pirmā veida (vienkāršie jeb universālie) gadījumi. **/
+...
+/* "bet" gadījums */
+
+bet(){
+	move cursor back for 5;
+	read next symbol;
+	if (symbol is dot){
+	move cursor forward by 4;
+	end;
+	}
+	if (symbol is coma) {
+	move cursor forward by 4;
+	end;
+	}
+	if (symbol is quote){
+	move cursor forward by 4;
+	end;
+	}
+	if (symbol is in alphabet){ // apskatīti neliterāra vārdu lietojuma situācijas ar vienu simbolu gariem vāŗdiem, piemēram, "a bet!" utt.
+		move cursor back for 2;
+		read symbol;
+		if (symbol is not in alphabet or number){
+				move cursor foward by 5;
+				end;
+		}
+		else{
+			move cursor forward by 1;
+		}
+
+	}
+	write coma;
+	move cursor forward for 4;
+	end;
+}
+/* Apskata vārda "bet" komatu lietojumu, šajā piemērā ir arī apskatīts "a bet" gadījums (sarunvalodā). Tajā pašā laikā "a" var arī uzskatīt kā, piemēram, mainīgo kādā tekstā, šādā gadījumā būtu "a, bet". Tieši šis variants izdomāts piemēra paplašināšanai */
+
+/* komatu lietojums pie vārda "protams" */
+
+protams(){
+	move cursor back for 9;
+	read symbol;
+	while(checked words are less than 20){
+		while(symbol is in alphabet or a number){
+			move cursor back for 1;
+			read symbol;
+			move cursor back for 1;
+		}
+		if (symbol == "." or "!" or "?"){
+			count = count of symbols moved back;
+			move cursor forward for (count-8);
+			write coma;
+			move cursor forward for 8;
+			write coma;
+			end;
+		}
+		read word;
+		move cursor back for wordlength+1;
+		if (word == "ir" or "būt" or "būtu"){
+			count = count of symbols moved back;
+			move cursor forward for count;
+			end;
+		}
+		move cursor forward for (count-8);
+		read symbol;
+		if(symbol is not "." or "," or "!" or "?"){
+			move cursor back for 1;
+			write coma;
+		}
+		move cursor forward for 8;
+		read symbol;
+		if(symbol is not "." or "," or "!" or "?") {
+			move cursor back for 1;
+			write coma;
+		}
+	}
+}
+/* Apskata vārda "protams" komatu lietojumu. To liek komatos no abiem galiem, ja tas ir iespraudums. Tas var nebūt iespraudums, ja pirms tā ir vārda "ir" formas - "ir", "būt" šo vārdu iespējamību arī pārbaudām */
+
+/** Otrā veida (sarežģītie jeb konstrukciju) gadījumi. **/
+
+...
+
+/* vārda "ka" kā palīgteikuma ievadvārda komatu lietojums */
+
+ka(){
+	move cursor back for 3;
+	call function paligteikumu_parbaude(ka, 2);
+	end;
+}
+
+/* Izsaucam vienlīdzīgu palīgteikumu pārbaudi, norādot, ka pārbaudāmais vārds ir "ka". */
+
+/* Vārda "ja" kā palīgteikuma ievadvārda komatu lietojums */
+
+ja(){
+	move cursor back for 3;
+	call function paligteikumu_parbaude(ja, 2);
+	end;
+}
+/* Izsaucam vienlīdzīgu palīgteikumu pārbaudi, norādot, ka pārbaudāmais vārds ir "ja". */
+
+...
+
+paligteikumu_parbaude(vards, wordlength){
+	word = '';
+	while(word is not vards){
+		while(symbol is in alphabet or a number){
+			move cursor back for 1;
+			read symbol;
+			move cursor back for 1;
+			if (symbol == "." or "!" or "?"){
+				count = count of symbols moved back;
+				move cursor forward for count;
+				read symbol;
+				if (symbol is ' '){
+					move cursor back for 1;
+					write coma;
+					move cursor forward for wordlength;
+					end;
+				}
+				move cursor forward for wordlength;
+				end;
+			}
+			read word;
+			if(word == vards){
+			count = count of symbols moved back;
+			move cursor forward for count;
+			move cursor forward for wordlength;
+			end;
+			}
+		}
+	}
+	end;
+}
+
+...
+/** Galvenā funkcija, kas nodrošina tekstapstrādi **/
+
+main(){
+
+.......
+
+}
