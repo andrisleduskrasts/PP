@@ -21,9 +21,12 @@ def loadwritetextNC(inFile):
 
 #Load the text and pass it on without commas. Used for testing
 def loadtextNC(inFile):
+	#read the file into "content"
 	content = inFile.read()
+	#remove commas from content
 	content = content.replace(",", "")
 	return content
+
 #Text splitting module
 def textsplitter(content):
 	import re
