@@ -338,6 +338,12 @@ def lai(wordlist, number):
 		if re.match('[aA]rī[,:-]?$', wordlist[number+1]) and testword > 0:
 			return wordlist
 		else:
+			#The added exception with question words, can only happen if the position of "lai" is not at the start
+			if number > 0:
+				if re.match('[kK]āpēc|[kK]o$|[kK]ā$|[kK]ur$|[kK]am$', wordlist[number-1]):
+					return wordlist
+				elif re.match('[kK]āpēc|[kK]o$|[kK]ā$|[kK]ur$|[kK]am$', wordlist[number-2]):
+					return wordlist
 			#no exceptions have been met, add the punctuation mark and return the sentence
 			wordlist[number-1] = wordlist[number-1] + ','
 			return wordlist
