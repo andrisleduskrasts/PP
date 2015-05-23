@@ -3,4 +3,4 @@ PP
 
 Pieturzīmju palīgs
 ==
-Copyright 2014 Andris Leduskrasts
+Copyright 2015 Andris Leduskrasts
