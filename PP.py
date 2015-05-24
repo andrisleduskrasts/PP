@@ -42,7 +42,7 @@ def textsplitter(content):
 				sentences.pop(counter)
 		elif re.match('[a-zāčēģīķļņšūž].*|[.]', sentence):
 			if counter!=0:
-				senteces[counter-1] = sentences[counter-1] + sentence
+				sentences[counter-1] = sentences[counter-1] + sentence
 				sentences.pop(counter)
 	#If a non-first sentence starts with lower letter, add it to the previous sentence and pop it out of the list
 	return sentences
@@ -363,7 +363,7 @@ def jo(wordlist, number):
 
 #Interface module
 #specify the input file
-inFile = open('testi/testjo.txt', 'r')
+inFile = open('testi/testlai.txt', 'r')
 data = loadtext(inFile)
 inFile.close()
 #Split data into sentences using the sentences textsplitter() function
