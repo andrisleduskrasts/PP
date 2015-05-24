@@ -1,0 +1,26 @@
+Input:
+Man ir nepieciešams, lai viņi pazustu.
+Man ir vajadzīgs lai viņi pazustu.
+Lai arī ko viņi teiktu un domātu lai tas neatkārtotos.
+Lai arī ko viņi teiktu un domātu, lai tas neatkārtotos.
+Lai arī ko viņi teiktu un lai arī ko viņi domātu lai tas neatkārtotos.
+Jāpierauga lai viņi izpildītu uzdevumus un lai viņi to darītu godīgā veidā.
+Jāpierauga lai viņi izpildītu uzdevumus lai arī tas varētu likties grūti.
+Ko lai viņi dara?
+Bet ar ko lai dala gultu?
+Kāpēc lai viņš to darītu...
+Un kur lai viņš iet?
+
+Output:
+Man ir nepieciešams, lai viņi pazustu.
+Man ir vajadzīgs, lai viņi pazustu.
+Lai arī ko viņi teiktu un domātu, lai tas neatkārtotos.
+Lai arī ko viņi teiktu un domātu, lai tas neatkārtotos.
+Lai arī ko viņi teiktu un lai arī ko viņi domātu, lai tas neatkārtotos.
+Jāpierauga, lai viņi izpildītu uzdevumus un lai viņi to darītu godīgā veidā.
+Jāpierauga, lai viņi izpildītu uzdevumus, lai arī tas varētu likties grūti.
+Ko lai viņi dara?
+Bet ar ko lai dala gultu?
+Kāpēc lai viņš to darītu...
+Un kur lai viņš iet?
+
