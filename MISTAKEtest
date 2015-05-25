@@ -1,0 +1,11 @@
+Input:
+Bija nepieciešams piemērs. Vairākas darbības, kurās tiek apskatītas problēmas, veiktas piemēram.
+Viņam likās ka tas ir protams.
+Vai tas ir iespējams? Iespējams ir.
+Tas ir jo īpaši bīstami.
+
+Output:
+Bija nepieciešams piemērs. Vairākas darbības, kurās tiek apskatītas problēmas, veiktas, piemēram.
+Viņam likās, ka tas ir, protams.
+Vai tas ir iespējams? Iespējams, ir.
+Tas ir, jo īpaši bīstami.
