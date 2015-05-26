@@ -53,27 +53,27 @@ def grammarCheck(sentences):
 		#split sentence into words
 		for counter, word in enumerate(wordlist):
 			#check if current word calls anything from the grammar law list
-			if re.match('ka[,]?$', word):
+			if re.match('ka[,]?$|[.][.][.]', word):
 				wordlist = ka(wordlist, counter)
-			if re.match('ja[,]?$', word):
+			if re.match('ja[,]?$|[.][.][.]', word):
 				wordlist = ja(wordlist, counter)
-			if re.match('[pP]iemēram[,.?!]?$', word):
+			if re.match('[pP]iemēram[,.?!]?$|[.][.][.]', word):
 				wordlist = piemeram(wordlist, counter)
-			if re.match('bet[.,?!]?$', word):
+			if re.match('bet[.,?!]?$|[.][.][.]', word):
 				wordlist = bet(wordlist, counter)
-			if re.match('[pP]rotams[.,?!]?$', word):
+			if re.match('[pP]rotams[.,?!]?$|protams[.][.][.]', word):
 				wordlist = protams(wordlist, counter)
-			if re.match('[jJ]ā[.,?!]?$', word):
+			if re.match('[jJ]ā[.,?!]?$|jā[.][.][.]', word):
 				wordlist = jaa(wordlist, counter)
-			if re.match('[nN]ē[.,?!]?$', word):
+			if re.match('[nN]ē[.,?!]?$|nē[.][.][.]', word):
 				wordlist = nee(wordlist, counter)
 			if re.match('Iespējams$', word):
 				wordlist = iespejams(wordlist, counter)
-			if re.match('gan[,.?!]?$', word):
+			if re.match('gan[,.?!]?$|gan[.][.][.]', word):
 				wordlist = gan(wordlist, counter)
-			if re.match('kur[,.?!]?$', word):
+			if re.match('kur[,.?!]?$|lai[.][.][.]', word):
 				wordlist = kur(wordlist, counter)
-			if re.match('lai[,.?!]?$', word):
+			if re.match('lai[,.?!]?$|lai[.][.][.]', word):
 				wordlist = lai(wordlist, counter)
 			if re.match('jo[,.?!]?$|jo[.][.][.]', word):
 				wordlist = jo(wordlist, counter)
@@ -87,13 +87,13 @@ def grammarCheck(sentences):
 				wordlist = ne(wordlist, counter)
 			if re.match('kaut$', word):
 				if len(wordlist)>counter:
-					if re.match('[Gg]an[,.:;!?]?$', wordlist[counter+1]):
+					if re.match('[Gg]an[,.:;!?]?$|gan[.][.][.]', wordlist[counter+1]):
 						wordlist = kautgan(wordlist, counter)
-					elif re.match('[Aa]rī[,.:;!?]?$', wordlist[counter+1]):
+					elif re.match('[Aa]rī[,.:;!?]?$|gan[.][.][.]', wordlist[counter+1]):
 						wordlist = kautari(wordlist, counter)
-			if re.match('kāpēc[,.:;!?]?$', word):
+			if re.match('kāpēc[,.:;!?]?$|kāpēc[.][.][.]', word):
 				wordlist = kapec(wordlist, counter)
-			if re.match('cik[,.:?!?]?$', word):
+			if re.match('cik[,.:?!?]?$|cik[.][.][.]', word):
 				wordlist = cik(wordlist, counter)
 
 		#result is changed back into sentence for later return
