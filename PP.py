@@ -363,6 +363,7 @@ def lai(wordlist, number):
 				elif re.match('[kK]āpēc|[kK]o$|[kK]ā$|[kK]ur$|[kK]am$|[kK]ad$', wordlist[number-2]):
 					return wordlist
 			#no exceptions have been met, add the punctuation mark and return the sentence
+			#add more exceptions here
 			wordlist[number-1] = wordlist[number-1] + ','
 			return wordlist
 #"jo" function
