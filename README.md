@@ -1,6 +1,6 @@
-PP
-==
 
-Pieturzīmju palīgs
+Pieturzīmju Palīgs
 ==
-Copyright 2015 Andris Leduskrasts
+Program code aviable: PP.py
+
+Andris Leduskrasts, 2015
