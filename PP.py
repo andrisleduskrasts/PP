@@ -2,6 +2,7 @@
 # Program is split into modules - Text loading, text splitting and grammar modules. The list of laws is connected to the grammar module.
 
 #Text loading module
+import re
 def loadtext(inFile):
 	content = inFile.read()
 	return content
@@ -29,8 +30,6 @@ def loadtextNC(inFile):
 
 #Text splitting module
 def textsplitter(content):
-	import re
-
 	sentences = re.findall('.*?[A-Za-z0-9āčēģīķļņšūž][.!?][][!""''()*+,.;<=>?@\^_{|}~-]*?\s?|.*?[.?!]+[^.]|.*?[.?!]+$|.*?$', content)
 	#The current regex also splits situations like "tas utt. ļāva un 1997. gadā"
 	counter = 0
@@ -47,7 +46,6 @@ def textsplitter(content):
 
 #Grammar module - sentence checker and law function calls
 def grammarCheck(sentences):
-	import re
 	for sentencecounter, sentence in enumerate(sentences):
 		wordlist = sentence.split()
 		#split sentence into words
@@ -103,7 +101,6 @@ def grammarCheck(sentences):
 #Laws of grammar module
 #"ka" function - first it is tested if there's not a punctuation mark previously, else the grammar law is applied
 def ka(wordlist, number):
-	import re
 	if re.match('.*[,;:-]', wordlist[number-1]):
 		return wordlist
 	else:
@@ -120,7 +117,6 @@ def ka(wordlist, number):
 		return wordlist
 #"ja" function
 def ja(wordlist, number):
-	import re
 	if re.match('.*[,:;-]', wordlist[number-1]):
 		return wordlist
 	else:
@@ -137,7 +133,6 @@ def ja(wordlist, number):
 		return wordlist
 #"piemēram" function
 def piemeram(wordlist, number):
-	import re
 	if re.match('.*[(,;:-]', wordlist[number-1]) or number == 0:
 		if re.match('[pP]iemēram[,.;:]|[pP]iemēram[.][.][.]', wordlist[number]):
 			return wordlist
@@ -157,7 +152,6 @@ def piemeram(wordlist, number):
 			return wordlist
 #"bet" function
 def bet(wordlist, number):
-	import re
 	if number == 0 or re.match('.*[(,;:-]', wordlist[number-1]):
 		return wordlist
 	else:
@@ -165,7 +159,6 @@ def bet(wordlist, number):
 		return wordlist
 #"protams" function
 def protams(wordlist, number):
-	import re
 	if re.match('.*[(,;:-]', wordlist[number-1]) or number == 0:
 		if re.match('[pP]rotams[,.;:]|[pP]rotams[.][.][.]', wordlist[number]):
 			return wordlist
@@ -185,7 +178,6 @@ def protams(wordlist, number):
 			return wordlist
 #"jā" function
 def jaa(wordlist, number):
-	import re
 	if re.match('.*[(,;:-]|[""]?[nN]u,?$|[aA]rī$|[""]?[uU]n$|[""]?[vV]ai$|[""]?[kK]a$|[""]?[jJ]o$|[""]?[bB]et$|[""]?[vV]arbūt$|[""]?[gG]an$|[""]?[tT]ad$|[""]?[kK]ur$|[Kk]uram[,.]?$|[Kk]uriem[,.]?$|[Kk]uru[,.]?$|[Kk]urām[,.]?$|[Kk]urā[,.]?$|[kK]ad[,.?]$', wordlist[number-1]) or number == 0:
 		if re.match('nu$', wordlist[number-1]):
 			if re.match('nu,$', wordlist[number-1]):
@@ -243,7 +235,6 @@ def jaa(wordlist, number):
 			return wordlist
 #"nē" function
 def nee(wordlist, number):
-	import re
 	if re.match('.*[(,;:-]|[""]?[nN]u,?$|[""]?[uU]n$|[""]?[vV]ai$|[""]?[kK]a$|[""]?[jJ]o$|[""]?[bB]et$|[""]?[vV]arbūt$|[""]?[gG]an$|[""]?[tT]ad$|[""]?[kK]ur$|[Kk]uram[,.]?$|[Kk]uriem[,.]?$|[Kk]uru[,.]?$|[Kk]urām[,.]?$|[Kk]urā[,.]?$|[kK]ad[,.]?$|[aA]rī$', wordlist[number-1]) or number == 0:
 		if re.match('nu$', wordlist[number-1]):
 			if re.match('nu,$', wordlist[number-1]):
@@ -279,7 +270,6 @@ def nee(wordlist, number):
 			return wordlist
 #"iespējams" function
 def iespejams(wordlist, number):
-	import re
 	if number == 0:
 		if re.match('.*t[,.!?:;]?$|.*ties[,.!?:;]?$|-$', wordlist[number+1]):
 			return wordlist
@@ -293,7 +283,6 @@ def iespejams(wordlist, number):
 		return wordlist
 #"gan" function
 def gan(wordlist, number):
-	import re
 	if number == 0:
 		return wordlist
 	counter = 0
@@ -313,7 +302,6 @@ def gan(wordlist, number):
 		return wordlist
 #"kur" function
 def kur(wordlist, number):
-	import re
 	if number == 0:
 		return wordlist
 	if re.match('.*[,;:-]$', wordlist[number-1]):
@@ -337,7 +325,6 @@ def kur(wordlist, number):
 #"lai" function
 def lai(wordlist, number):
 	#regex method import
-	import re
 	#checking of punctuation in the previous word
 	if len(wordlist) < number:
 		return wordlist
@@ -380,7 +367,6 @@ def lai(wordlist, number):
 			return wordlist
 #"jo" function
 def jo(wordlist, number):
-	import re
 	if number == 0 or re.match('.*[(,;:-]', wordlist[number-1]):
 		return wordlist
 	else:
@@ -396,7 +382,6 @@ def jo(wordlist, number):
 			return wordlist
 #"kad" function
 def kad(wordlist, number):
-	import re
 	if number == 0:
 		return wordlist
 	if re.match('.*[,;:-]$', wordlist[number-1]):
@@ -419,7 +404,6 @@ def kad(wordlist, number):
 		return wordlist
 #"tostarp" function
 def tostarp(wordlist, number):
-	import re
 	if number == 0 or re.match('.*[(,;:-]|[Uu]n[,-]?$|[Vv]ai[,-]?$|[Bb]et[,-]?$', wordlist[number-1]):
 		return wordlist
 	else:
@@ -427,7 +411,6 @@ def tostarp(wordlist, number):
 		return wordlist
 #"šķiet" function
 def skiet(wordlist, number):
-	import re
 	if number == 0:
 		wordlist[number] = wordlist[number] + ','
 		return wordlist
@@ -435,7 +418,6 @@ def skiet(wordlist, number):
 		return wordlist
 #"ne" function
 def ne(wordlist, number):
-	import re
 	if number == 0:
 		return wordlist
 	counter = 0
@@ -450,7 +432,6 @@ def ne(wordlist, number):
 	return wordlist
 #"kaut gan" function
 def kautgan(wordlist, number):
-	import re
 	if number == 0:
 		return wordlist
 	if re.match('.*[,:-]$', wordlist[number-1]):
@@ -460,7 +441,6 @@ def kautgan(wordlist, number):
 		return wordlist
 #"kaut arī" function
 def kautari(wordlist, number):
-	import re
 	if number == 0:
 		return wordlist
 	if re.match('.*[,:-]$', wordlist[number-1]):
@@ -472,7 +452,6 @@ def kautari(wordlist, number):
 		return wordlist
 #"kāpēc" function
 def kapec(wordlist, number):
-	import re
 	if number == 0:
 		return wordlist
 	if re.match('.*[,;:-]$|[Uu]n$|[Bb]et$|[Tt]ad$|[Vv]ai$|[Nn]ezin$', wordlist[number-1]):
@@ -482,7 +461,6 @@ def kapec(wordlist, number):
 		return wordlist
 #"cik" function
 def cik(wordlist, number):
-	import re
 	if number == 0:
 		return wordlist
 	if re.match('.*[,;:-]$|[Uu]n$|[Bb]et$|[Tt]ad$|[Vv]ai$|[Nn]ezin$|[Jj]o$|[Pp]ar$|[Uu]z$|[Zz]em$|[Vv]irs$|[Pp]ie$|[Nn]ezin$', wordlist[number-1]):
