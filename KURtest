@@ -6,6 +6,14 @@ Es zinu, kur ir manas mājas un kur ir tavas.
 Kur vinš bija skrējis un kur nē nav mana darīšana.
 
 Output:
+Unit test:
+Es zinu, kur ir manas mājas.
+Es zinu, kur ir manas mājas.
+Es zinu, kur ir manas mājas un kur ir tavas.
+Es zinu, kur ir manas mājas un kur ir tavas.
+Kur vinš bija skrējis un kur nē nav mana darīšana.
+
+Combined test:
 Es zinu, kur ir manas mājas.
 Es zinu, kur ir manas mājas.
 Es zinu, kur ir manas mājas un kur ir tavas.
