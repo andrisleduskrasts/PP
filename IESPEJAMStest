@@ -1,0 +1,24 @@
+Input:
+Tas nav iespējams.
+Tas iespējams nav labi.
+Iespējams, tas nav labi.
+Iespējams ir atzīties.
+Iespējams atzīt vainu.
+Iespējams esmu bijis.
+
+Output:
+Unit test:
+Tas nav iespējams.
+Tas iespējams nav labi.
+Iespējams, tas nav labi.
+Iespējams ir atzīties.
+Iespējams atzīt vainu.
+Iespējams, esmu bijis.
+
+Combined test:
+Tas nav iespējams.
+Tas iespējams nav labi.
+Iespējams, tas nav labi.
+Iespējams ir atzīties.
+Iespējams atzīt vainu.
+Iespējams, esmu bijis.
