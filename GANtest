@@ -1,0 +1,22 @@
+Input:
+
+Tas gan ir labi!
+Divi režīmi gan ir būtiski gan cilvēkam gan robotam.
+Divi režīmi ir būtiski gan cilvēkam, gan robotam.
+Divi režīmi ir būtiski gan cilvēkam gan robotam.
+Gan - gan.
+
+Output:
+Unit test:
+Tas gan ir labi!
+Divi režīmi gan ir būtiski, gan cilvēkam, gan robotam.
+Divi režīmi ir būtiski gan cilvēkam, gan robotam.
+Divi režīmi ir būtiski gan cilvēkam, gan robotam.
+Gan - gan.
+
+Combined test:
+Tas gan ir labi!
+Divi režīmi gan ir būtiski, gan cilvēkam, gan robotam.
+Divi režīmi ir būtiski gan cilvēkam, gan robotam.
+Divi režīmi ir būtiski gan cilvēkam, gan robotam.
+Gan - gan.
