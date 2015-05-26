@@ -53,13 +53,13 @@ def grammarCheck(sentences):
 		#split sentence into words
 		for counter, word in enumerate(wordlist):
 			#check if current word calls anything from the grammar law list
-			if re.match('ka[,]?$|[.][.][.]', word):
+			if re.match('ka[,]?$|ka[.][.][.]', word):
 				wordlist = ka(wordlist, counter)
-			if re.match('ja[,]?$|[.][.][.]', word):
+			if re.match('ja[,]?$|ja[.][.][.]', word):
 				wordlist = ja(wordlist, counter)
-			if re.match('[pP]iemēram[,.?!]?$|[.][.][.]', word):
+			if re.match('[pP]iemēram[,.?!]?$|piemēram[.][.][.]', word):
 				wordlist = piemeram(wordlist, counter)
-			if re.match('bet[.,?!]?$|[.][.][.]', word):
+			if re.match('bet[.,?!]?$|bet[.][.][.]', word):
 				wordlist = bet(wordlist, counter)
 			if re.match('[pP]rotams[.,?!]?$|protams[.][.][.]', word):
 				wordlist = protams(wordlist, counter)
