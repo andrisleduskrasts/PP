@@ -1,0 +1,21 @@
+Input:
+Bet tas nekas!
+Tas ir redzēts, bet ne daudzas reizes.
+Tas ir redzēts bet ne daudz reizes.
+Divas reizes - bet ne vairāk.
+Divas reizes (bet ne vairāk).
+
+Output:
+Unit test:
+Bet tas nekas!
+Tas ir redzēts, bet ne daudzas reizes.
+Tas ir redzēts, bet ne daudz reizes.
+Divas reizes - bet ne vairāk.
+Divas reizes (bet ne vairāk).
+
+Combined test:
+Bet tas nekas!
+Tas ir redzēts, bet ne daudzas reizes.
+Tas ir redzēts, bet ne daudz reizes.
+Divas reizes - bet ne vairāk.
+Divas reizes (bet ne vairāk).
