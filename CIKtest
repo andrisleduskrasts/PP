@@ -1,0 +1,18 @@
+Input:
+Cik reizes ir nepieciešams atkārtot lai tu saprastu?
+Man neinteresē lai arī cik viņš piedāvātu.
+Padomā cik bieži tu lieki runā.
+Pasaki kāpēc tu esi te un cik ilgi tu plāno te uzturēties.
+
+Output:
+Unit test:
+Cik reizes ir nepieciešams atkārtot lai tu saprastu?
+Man neinteresē lai arī cik viņš piedāvātu.
+Padomā, cik bieži tu lieki runā.
+Pasaki kāpēc tu esi te un cik ilgi tu plāno te uzturēties.
+
+Combined test:
+Cik reizes ir nepieciešams atkārtot, lai tu saprastu?
+Man neinteresē, lai arī cik viņš piedāvātu.
+Padomā, cik bieži tu lieki runā.
+Pasaki, kāpēc tu esi te un cik ilgi tu plāno te uzturēties.
