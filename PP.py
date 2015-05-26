@@ -33,17 +33,14 @@ def textsplitter(content):
 
 	sentences = re.findall('.*?[A-Za-z0-9āčēģīķļņšūž][.!?][][!""''()*+,.;<=>?@\^_{|}~-]*?\s?|.*?[.?!]+[^.]|.*?[.?!]+$|.*?$', content)
 	#The current regex also splits situations like "tas utt. ļāva un 1997. gadā"
-	for counter, sentence in enumerate(sentences):
-		if re.match('[a-zāčēģīķļņšūž].*|[.]', sentence) and re.match('[a-zāčēģīķļņšūž].*|[.]', sentences[counter+1]):
+	counter = 0
+	while counter < len(sentences):
+		if re.match('[a-zāčēģīķļņšūž].*|[.?!]', sentences[counter]):
 			if counter != 0:
-				sentences[counter-1] = sentences[counter-1]+sentence
-				sentences[counter-1] = sentences[counter-1]+sentences[counter+1]
-				sentences.pop(counter+1)
+				sentences[counter-1] = sentences[counter-1] + sentences[counter]
 				sentences.pop(counter)
-		elif re.match('[a-zāčēģīķļņšūž].*|[.?!]', sentence):
-			if counter!=0:
-				sentences[counter-1] = sentences[counter-1] + sentence
-				sentences.pop(counter)
+				counter = counter - 1
+		counter = counter + 1
 	#If a non-first sentence starts with lower letter, add it to the previous sentence and pop it out of the list
 	return sentences
 
@@ -497,7 +494,7 @@ def cik(wordlist, number):
 	return wordlist
 #Interface module
 #specify the input file
-inFile = open('testi/testkautari.txt', 'r')
+inFile = open('testi/testin.txt', 'r')
 data = loadtext(inFile)
 inFile.close()
 #Split data into sentences using the sentences textsplitter() function
