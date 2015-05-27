@@ -1,0 +1,30 @@
+Input:
+Man, piemēram, ir vienalga.
+Man piemēram, ir vienalga.
+Man, piemēram ir vienalga.
+Man piemēram ir vienalga.
+Piemēram, man ir vienalga.
+Piemēram man ir vienalga.
+Man ir vienalga, piemēram.
+Man ir vienalga piemēram.
+
+Output:
+Unit test:
+Man, piemēram, ir vienalga.
+Man, piemēram, ir vienalga.
+Man, piemēram, ir vienalga.
+Man, piemēram, ir vienalga.
+Piemēram, man ir vienalga.
+Piemēram, man ir vienalga.
+Man ir vienalga, piemēram.
+Man ir vienalga, piemēram.
+
+Combined test:
+Man, piemēram, ir vienalga.
+Man, piemēram, ir vienalga.
+Man, piemēram, ir vienalga.
+Man, piemēram, ir vienalga.
+Piemēram, man ir vienalga.
+Piemēram, man ir vienalga.
+Man ir vienalga, piemēram.
+Man ir vienalga, piemēram.
