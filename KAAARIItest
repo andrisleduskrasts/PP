@@ -1,0 +1,21 @@
+Input:
+Kaut gan Mārtiņš Reisons vēl jaunieša vecumā bija piedalījies toreizējās Brocēnu lielkomandas treniņos kā arī spēlējis Latvijas junioru izlasē ilūziju par spožu karjeru lielajā basketbolā viņam neesot bijis.
+Tas ir atkarīgs no dzīves pieredzes no kā arī katram no mums ir jāmācās.
+Atceries ierasties laicīgi kā arī neaizmirst savu pasi.
+Atceries ierasties laicīgi, kā arī neaizmirst savu pasi.
+Pasažieru komercpārvadājumiem izmantojamo transportlīdzekļu (vieglo taksometru un autobusu) kā arī autoapmācības iestādēs transportlīdzekļu vadītāju apmācībai izmantojamo un attiecīgi reģistrēto transportlīdzekļu apskate veicama ne retāk kā divreiz gadā.
+
+Output:
+Unit test:
+Kaut gan Mārtiņš Reisons vēl jaunieša vecumā bija piedalījies toreizējās Brocēnu lielkomandas treniņos, kā arī spēlējis Latvijas junioru izlasē ilūziju par spožu karjeru lielajā basketbolā viņam neesot bijis.
+Tas ir atkarīgs no dzīves pieredzes, no kā arī katram no mums ir jāmācās.
+Atceries ierasties laicīgi, kā arī neaizmirst savu pasi.
+Atceries ierasties laicīgi, kā arī neaizmirst savu pasi.
+Pasažieru komercpārvadājumiem izmantojamo transportlīdzekļu (vieglo taksometru un autobusu), kā arī autoapmācības iestādēs transportlīdzekļu vadītāju apmācībai izmantojamo un attiecīgi reģistrēto transportlīdzekļu apskate veicama ne retāk kā divreiz gadā.
+
+Combined test:
+Kaut gan Mārtiņš Reisons vēl jaunieša vecumā bija piedalījies toreizējās Brocēnu lielkomandas treniņos, kā arī spēlējis Latvijas junioru izlasē ilūziju par spožu karjeru lielajā basketbolā viņam neesot bijis.
+Tas ir atkarīgs no dzīves pieredzes, no kā arī katram no mums ir jāmācās.
+Atceries ierasties laicīgi, kā arī neaizmirst savu pasi.
+Atceries ierasties laicīgi, kā arī neaizmirst savu pasi.
+Pasažieru komercpārvadājumiem izmantojamo transportlīdzekļu (vieglo taksometru un autobusu), kā arī autoapmācības iestādēs transportlīdzekļu vadītāju apmācībai izmantojamo un attiecīgi reģistrēto transportlīdzekļu apskate veicama ne retāk kā divreiz gadā.
