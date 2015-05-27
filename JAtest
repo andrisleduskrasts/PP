@@ -1,0 +1,18 @@
+Input:
+Tas ir tad, ja man nebūs iebildumu.
+Tas ir tad ja man nebūs iebildumu.
+Tas ir tad ja man nebūs iebildumu un ja viņš piedalīsies.
+Ja viņš neieradīsies un ja man nebūs draugu.
+
+Output:
+Unit test:
+Tas ir tad, ja man nebūs iebildumu.
+Tas ir tad, ja man nebūs iebildumu.
+Tas ir tad, ja man nebūs iebildumu un ja viņš piedalīsies.
+Ja viņš neieradīsies un ja man nebūs draugu.
+
+Combined test:
+Tas ir tad, ja man nebūs iebildumu.
+Tas ir tad, ja man nebūs iebildumu.
+Tas ir tad, ja man nebūs iebildumu un ja viņš piedalīsies.
+Ja viņš neieradīsies un ja man nebūs draugu.
