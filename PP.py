@@ -33,7 +33,7 @@ def textsplitter(content):
 	sentences = re.findall('.*?[A-Za-z0-9āčēģīķļņšūž][.!?][][!""''()*+,.;<=>?@\^_{|}~-]*?\s?|.*?[.?!]+[^.]|.*?[.?!]+$|.*?$', content)
 	#The current regex also splits situations like "tas utt. ļāva un 1997. gadā"
 	counter = 0
-	while counter < len(sentences):
+	while counter + 1 < len(sentences):
 		if re.match('[a-zāčēģīķļņšūž].*|[.?!]', sentences[counter]):
 			if counter != 0:
 				sentences[counter-1] = sentences[counter-1] + sentences[counter]
@@ -84,7 +84,7 @@ def grammarCheck(sentences):
 			if re.match('ne[,.?!]?$|ne[.][.][.]', word):
 				wordlist = ne(wordlist, counter)
 			if re.match('kaut$', word):
-				if len(wordlist)>counter:
+				if len(wordlist)>counter + 1:
 					if re.match('[Gg]an[,.:;!?]?$|gan[.][.][.]', wordlist[counter+1]):
 						wordlist = kautgan(wordlist, counter)
 					elif re.match('[Aa]rī[,.:;!?]?$|gan[.][.][.]', wordlist[counter+1]):
@@ -178,35 +178,45 @@ def protams(wordlist, number):
 			return wordlist
 #"jā" function
 def jaa(wordlist, number):
-	if re.match('.*[(,;:-]|[""]?[nN]u,?$|[aA]rī$|[""]?[uU]n$|[""]?[vV]ai$|[""]?[kK]a$|[""]?[jJ]o$|[""]?[bB]et$|[""]?[vV]arbūt$|[""]?[gG]an$|[""]?[tT]ad$|[""]?[kK]ur$|[Kk]uram[,.]?$|[Kk]uriem[,.]?$|[Kk]uru[,.]?$|[Kk]urām[,.]?$|[Kk]urā[,.]?$|[kK]ad[,.?]$', wordlist[number-1]) or number == 0:
-		if re.match('nu$', wordlist[number-1]):
-			if re.match('nu,$', wordlist[number-1]):
-				wordlist[number-1] = wordlist[number-1]
-			else:
-				if number > 1:
-					if re.match('.*[,:;]', wordlist[number-2]):
-						wordlist[number-2] = wordlist[number-2]
-					else:
-						wordlist[number-2] = wordlist[number-2] + ','
+	if re.match('.*[(,;:-]|[""]?[nN]u,?$|[aA]rī$|[""]?[uU]n$|[""]?[vV]ai$|[""]?[kK]a$|[""]?[jJ]o$|[""]?[bB]et$|[""]?[vV]arbūt$|[""]?[gG]an$|[""]?[tT]ad$|[""]?[kK]ur$|[Kk]uram[,.]?$|[Kk]uriem[,.]?$|[Kk]uru[,.]?$|[Kk]urām[,.]?$|[Kk]urā[,.]?$|[kK]ad[,.]?$|[jJ]au[,.]?$', wordlist[number-1]) or number == 0:
+		if len(wordlist) == 1:
+			return wordlist
+		if number > 0:
+			if re.match('nu$', wordlist[number-1]):
+				if re.match('nu,$', wordlist[number-1]):
+					wordlist[number-1] = wordlist[number-1]
+				else:
+					if number > 1:
+						if re.match('.*[,:;]', wordlist[number-2]):
+							wordlist[number-2] = wordlist[number-2]
+						else:
+							wordlist[number-2] = wordlist[number-2] + ','
 		if re.match('[jJ]ā[,.;:]|[jJ]ā[.][.][.]', wordlist[number]):
 			return wordlist
-		elif re.match('-$', wordlist[number+1]):
-			return wordlist
-		elif re.match('[uU]n$|[vV]ai$', wordlist[number+1]):
-			return wordlist
-		elif re.match('[gG]an', wordlist[number+1]):
-			if re.match('[gG]an[-,.!?:;""'']|[gG]an[.][.][.]', wordlist[number+1]):
+		if len(wordlist) > number + 1:
+			if re.match('-$', wordlist[number+1]):
 				return wordlist
-			elif re.match('-', wordlist[number+2]):
+			if re.match('[uU]n$|[vV]ai$', wordlist[number+1]):
 				return wordlist
-			elif re.match('[""]?[gG]an$', wordlist[number-1]) or re.match('[""]?[gG]an$', wordlist[number-2]):
-				wordlist[number] = wordlist[number] + ','
-				return wordlist
-			else:
+			elif re.match('[gG]an', wordlist[number+1]):
+				if re.match('[gG]an[-,.!?""'']', wordlist[number+1]):
+					return wordlist
+				elif len(wordlist) > number + 2:
+					if re.match('-', wordlist[number+2]):
+						return wordlist
+				if number > 0:
+					if re.match('[""]?[gG]an$', wordlist[number-1]):
+						wordlist[number] = wordlist[number] + ','
+						return wordlist
+				if number > 1:
+					if re.match('[""]?[gG]an$', wordlist[number-2]):
+						wordlist[number] = wordlist[number] + ','
+						return wordlist
 				wordlist[number+1] = wordlist[number+1] + ','
 				return wordlist
-		else:
 			wordlist[number] = wordlist[number] + ','
+			return wordlist
+		else:
 			return wordlist
 	else:
 		if re.match('.*,', wordlist[number-2]) and re.match('nu$', wordlist[number-1]):
@@ -215,70 +225,83 @@ def jaa(wordlist, number):
 			wordlist[number-1] = wordlist[number-1] + ','
 		if re.match('[jJ]ā[,.;:]', wordlist[number]):
 			return wordlist
-		elif re.match('-', wordlist[number+1]):
-			return wordlist
-		elif re.match('[uU]n$|[vV]ai$', wordlist[number+1]):
-			return wordlist
-		elif re.match('[gG]an', wordlist[number+1]):
-			if re.match('[gG]an[-,.!?""'']|[gG]an[.][.][.]', wordlist[number+1]):
+		if len(wordlist) > number + 1:
+			if re.match('-', wordlist[number+1]):
 				return wordlist
-			elif re.match('-', wordlist[number+2]):
+			if re.match('[uU]n$|[vV]ai$', wordlist[number+1]):
 				return wordlist
-			elif re.match('[""]?[gG]an$', wordlist[number-1]) or re.match('[""]?[gG]an$', wordlist[number-2]):
-				wordlist[number] = wordlist[number] + ','
-				return wordlist
-			else:
+			elif re.match('[gG]an', wordlist[number+1]):
+				if re.match('[gG]an[-,.!?""'']', wordlist[number+1]):
+					return wordlist
+				elif len(wordlist) > number + 2:
+					if re.match('-', wordlist[number+2]):
+						return wordlist
+				if number > 0:
+					if re.match('[""]?[gG]an$', wordlist[number-1]):
+						wordlist[number] = wordlist[number] + ','
+						return wordlist
+				if number > 1:
+					if re.match('[""]?[gG]an$', wordlist[number-2]):
+						wordlist[number] = wordlist[number] + ','
+						return wordlist
 				wordlist[number+1] = wordlist[number+1] + ','
 				return wordlist
-		else:
 			wordlist[number] = wordlist[number] + ','
 			return wordlist
+		return wordlist
 #"nē" function
 def nee(wordlist, number):
-	if re.match('.*[(,;:-]|[""]?[nN]u,?$|[""]?[uU]n$|[""]?[vV]ai$|[""]?[kK]a$|[""]?[jJ]o$|[""]?[bB]et$|[""]?[vV]arbūt$|[""]?[gG]an$|[""]?[tT]ad$|[""]?[kK]ur$|[Kk]uram[,.]?$|[Kk]uriem[,.]?$|[Kk]uru[,.]?$|[Kk]urām[,.]?$|[Kk]urā[,.]?$|[kK]ad[,.]?$|[aA]rī$', wordlist[number-1]) or number == 0:
-		if re.match('nu$', wordlist[number-1]):
-			if re.match('nu,$', wordlist[number-1]):
-				wordlist[number-1] = wordlist[number-1]
-			else:
-				if number > 1:
-					if re.match('.*[,:;]', wordlist[number-2]):
-						wordlist[number-2] = wordlist[number-2]
-					else:
-						wordlist[number-2] = wordlist[number-2] + ','
+	if re.match('.*[(,;:-]|[""]?[nN]u,?$|[""]?[uU]n$|[""]?[vV]ai$|[""]?[kK]a$|[""]?[jJ]o$|[""]?[bB]et$|[""]?[vV]arbūt$|[""]?[gG]an$|[""]?[tT]ad$|[""]?[kK]ur$|[Kk]uram[,.]?$|[Kk]uriem[,.]?$|[Kk]uru[,.]?$|[Kk]urām[,.]?$|[Kk]urā[,.]?$|[kK]ad[,.]?$|[aA]rī[,.]?$|[jJ]au[,.]?$', wordlist[number-1]) or number == 0:
+		if len(wordlist) == 1:
+			return wordlist
+		if number > 0:
+			if re.match('nu$', wordlist[number-1]):
+				if re.match('nu,$', wordlist[number-1]):
+					wordlist[number-1] = wordlist[number-1]
+				else:
+					if number > 1:
+						if re.match('.*[,:;]', wordlist[number-2]):
+							wordlist[number-2] = wordlist[number-2]
+						else:
+							wordlist[number-2] = wordlist[number-2] + ','
 		if re.match('[nN]ē[,.;:]|[nN]ē[.][.][.]', wordlist[number]):
 			return wordlist
-		elif re.match('-$', wordlist[number+1]):
-			return wordlist
-		elif re.match('[uU]n$|[vV]ai$', wordlist[number+1]):
-			return wordlist
-		else:
-			wordlist[number] = wordlist[number] + ','
-			return wordlist
+		if len(wordlist) > number + 1:
+			#check if there are after-word exceptions "un" , "vai"
+			if re.match('-$', wordlist[number+1]):
+				return wordlist
+			elif re.match('[uU]n$|[vV]ai$', wordlist[number+1]):
+				return wordlist
+			else:
+				wordlist[number] = wordlist[number] + ','
+				return wordlist
+		return wordlist
 	else:
-		if re.match('.*,', wordlist[number-2]) and re.match('nu$', wordlist[number-1]):
-			wordlist[number-1] = wordlist[number-1]
-		else:
-			wordlist[number-1] = wordlist[number-1] + ','
+		if number > 0:
+			if not re.match('.*[,.;:]', wordlist[number-1]):
+				wordlist[number-1] = wordlist[number-1] + ','
 		if re.match('[nN]ē[,.;:]', wordlist[number]):
 			return wordlist
-		elif re.match('-', wordlist[number+1]):
-			return wordlist
-		elif re.match('[uU]n$|[vV]ai$', wordlist[number+1]):
-			return wordlist
-		else:
-			wordlist[number] = wordlist[number] + ','
-			return wordlist
+		if len(wordlist) > number + 1:
+			if re.match('-', wordlist[number+1]):
+				return wordlist
+			elif re.match('[uU]n$|[vV]ai$', wordlist[number+1]):
+				return wordlist
+			else:
+				wordlist[number] = wordlist[number] + ','
+				return wordlist
+		return wordlist
 #"iespējams" function
 def iespejams(wordlist, number):
 	if number == 0:
-		if re.match('.*t[,.!?:;]?$|.*ties[,.!?:;]?$|-$', wordlist[number+1]):
-			return wordlist
-		elif len(wordlist)>2:
+		if len(wordlist) > 1:
+			if re.match('.*t[,.!?:;]?$|.*ties[,.!?:;]?$|-$', wordlist[number+1]):
+				return wordlist
+		if len(wordlist)>2:
 			if re.match('.*t[,.!?:;]?$|.*ties[,.!?:;]?$', wordlist[number+2]):
 				return wordlist
-		else:
-			wordlist[number] = wordlist[number] + ','
-			return wordlist
+		wordlist[number] = wordlist[number] + ','
+		return wordlist
 	else:
 		return wordlist
 #"gan" function
@@ -326,7 +349,7 @@ def kur(wordlist, number):
 def lai(wordlist, number):
 	#regex method import
 	#checking of punctuation in the previous word
-	if len(wordlist) < number:
+	if len(wordlist) < number + 1:
 		return wordlist
 	if re.match('.*[,;:-]', wordlist[number-1]):
 		return wordlist
@@ -335,7 +358,7 @@ def lai(wordlist, number):
 		testword1 = 0
 		testword2 = 0
 		#"lai arī", "un" and "lai" interaction 
-		if len(wordlist) == number:
+		if len(wordlist) == number + 1:
 			return wordlist
 		while counter < number:
 			if re.match('[Ll]ai[,-]?$', wordlist[counter]):
@@ -371,7 +394,7 @@ def jo(wordlist, number):
 	if number == 0 or re.match('.*[(,;:-]', wordlist[number-1]):
 		return wordlist
 	else:
-		if len(wordlist)>number:
+		if len(wordlist)>number + 1:
 			if re.match('[uU]n$', wordlist[number-1]):
 				return wordlist
 			elif re.match('[vV]ēl$', wordlist[number-1]) and re.match('.*āk[s]?[,.!?:;-]?', wordlist[number+1]):
@@ -471,9 +494,10 @@ def cik(wordlist, number):
 			return wordlist
 	wordlist[number-1] = wordlist[number-1] + ','
 	return wordlist
+
 #Interface module
 #specify the input file
-inFile = open('testi/testin.txt', 'r')
+inFile = open('testi/testtostarp.txt', 'r')
 data = loadtext(inFile)
 inFile.close()
 #Split data into sentences using the sentences textsplitter() function
