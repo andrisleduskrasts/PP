@@ -1,0 +1,27 @@
+Input:
+Kaut gan ko tas nozīmē?
+To es gribētu zināt kaut gan varbūt arī nē.
+To gan es gribētu zināt kaut gan varbūt arī nē.
+Jāskatās kaut gan diez vai tas ko mainīs.
+Kaut gan es to zinu tas gan neko nemaina.
+Man ir vajadzīgs gan viens gan otrs kaut gan es nezinu kāpēc.
+Kaut gan man tas nav vajadzīgs, es gan to gribētu.
+
+Output:
+Unit test:
+Kaut gan ko tas nozīmē?
+To es gribētu zināt, kaut gan varbūt arī nē.
+To gan es gribētu zināt, kaut gan varbūt arī nē.
+Jāskatās, kaut gan diez vai tas ko mainīs.
+Kaut gan es to zinu tas gan neko nemaina.
+Man ir vajadzīgs gan viens gan otrs, kaut gan es nezinu kāpēc.
+Kaut gan man tas nav vajadzīgs, es gan to gribētu.
+
+Combined test:
+Kaut gan ko tas nozīmē?
+To es gribētu zināt, kaut gan varbūt arī nē.
+To gan es gribētu zināt, kaut gan varbūt arī nē.
+Jāskatās, kaut gan diez vai tas ko mainīs.
+Kaut gan es to zinu tas gan neko nemaina.
+Man ir vajadzīgs gan viens, gan otrs, kaut gan es nezinu, kāpēc.
+Kaut gan man tas nav vajadzīgs, es gan to gribētu.
