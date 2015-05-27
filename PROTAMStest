@@ -1,0 +1,42 @@
+Input:
+Protams, tas ir saprotams.
+Protams, bet tas ir saprotams.
+Protams tas ir saprotams.
+Protams bet tas nav saprotams.
+Protams - divi cilvēki.
+Tur - protams - ir divi cilveki.
+Tur protams ir divi cilvēki.
+Tur protams, ir divi cilvēki.
+Tur, protams ir divi cilvēki.
+Tur, protams, ir divi cilvēki.
+Protams.
+Tas ir jāņem vērā protams.
+
+Output:
+Unit test:
+Protams, tas ir saprotams.
+Protams, bet tas ir saprotams.
+Protams, tas ir saprotams.
+Protams, bet tas nav saprotams.
+Protams - divi cilvēki.
+Tur - protams - ir divi cilveki.
+Tur, protams, ir divi cilvēki.
+Tur, protams, ir divi cilvēki.
+Tur, protams, ir divi cilvēki.
+Tur, protams, ir divi cilvēki.
+Protams.
+Tas ir jāņem vērā, protams.
+
+Combined test:
+Protams, tas ir saprotams.
+Protams, bet tas ir saprotams.
+Protams, tas ir saprotams.
+Protams, bet tas nav saprotams.
+Protams - divi cilvēki.
+Tur - protams - ir divi cilveki.
+Tur, protams, ir divi cilvēki.
+Tur, protams, ir divi cilvēki.
+Tur, protams, ir divi cilvēki.
+Tur, protams, ir divi cilvēki.
+Protams.
+Tas ir jāņem vērā, protams.
