@@ -1,0 +1,18 @@
+Input:
+Tas nav ne viens, ne otrs.
+Tas nav ne viens ne otrs.
+Ne viens ne otrs.
+Tas ne jau katram ir vajadzīgs.
+
+Output:
+Unit test:
+Tas nav ne viens, ne otrs.
+Tas nav ne viens, ne otrs.
+Ne viens, ne otrs.
+Tas ne jau katram ir vajadzīgs.
+
+Combined test:
+Tas nav ne viens, ne otrs.
+Tas nav ne viens, ne otrs.
+Ne viens, ne otrs.
+Tas ne jau katram ir vajadzīgs.
