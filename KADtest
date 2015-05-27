@@ -1,0 +1,33 @@
+Input:
+Es nezinu, kad tas notika.
+Es nezinu kad tas notika.
+Kad tas notika un kad nē.
+Viņs pamāja ar roku un kad pārsēja, atskatījās.
+Ko un kad viņš darīja.
+Es nezinu kur un kad viņš to darīja.
+Es nezinu kad tas bija aktuāli un kad nē.
+Tas notika kaut kad vakar.
+Man vienalga kur viņi tiek atrasti un kad viņi tiek atvesti.
+
+Output:
+Unit test:
+Es nezinu, kad tas notika.
+Es nezinu, kad tas notika.
+Kad tas notika un kad nē.
+Viņs pamāja ar roku un, kad pārsēja, atskatījās.
+Ko un kad viņš darīja.
+Es nezinu kur un kad viņš to darīja.
+Es nezinu, kad tas bija aktuāli un kad nē.
+Tas notika kaut kad vakar.
+Man vienalga kur viņi tiek atrasti un kad viņi tiek atvesti.
+
+Combined test:
+Es nezinu, kad tas notika.
+Es nezinu, kad tas notika.
+Kad tas notika un kad nē.
+Viņs pamāja ar roku un, kad pārsēja, atskatījās.
+Ko un kad viņš darīja.
+Es nezinu, kur un kad viņš to darīja.
+Es nezinu, kad tas bija aktuāli un kad nē.
+Tas notika kaut kad vakar.
+Man vienalga, kur viņi tiek atrasti un kad viņi tiek atvesti.
