@@ -1,0 +1,21 @@
+Input:
+Bet tostarp arī viņam.
+Tas ir vajadzīgs visiem kaķiem un tostarp arī viņam.
+Esam redzējuši dažādus zvērus, tostarp arī ziloņus.
+Esam redzējuši dažādus zvērus tostarp arī ziloņus.
+Tostarp arī vadoņi.
+
+Output:
+Unit test:
+Bet tostarp arī viņam.
+Tas ir vajadzīgs visiem kaķiem un tostarp arī viņam.
+Esam redzējuši dažādus zvērus, tostarp arī ziloņus.
+Esam redzējuši dažādus zvērus, tostarp arī ziloņus.
+Tostarp arī vadoņi.
+
+Combined test:
+Bet tostarp arī viņam.
+Tas ir vajadzīgs visiem kaķiem un tostarp arī viņam.
+Esam redzējuši dažādus zvērus, tostarp arī ziloņus.
+Esam redzējuši dažādus zvērus, tostarp arī ziloņus.
+Tostarp arī vadoņi.
