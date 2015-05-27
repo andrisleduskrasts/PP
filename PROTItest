@@ -1,0 +1,33 @@
+Input:
+Ko tu proti?
+Proti un redzi.
+To dara divreiz dienā proti rītā un vakarā.
+To dara divreiz dienā, proti rītā un vakarā.
+To dara divreiz dienā proti, rītā un vakarā.
+To dara divreiz dienā, proti, rītā un vakarā.
+Mācīties proti?
+Man nekad nav bijis skaidrs, ko tu tādu proti lai te atrastos.
+Proti kārtīgi kaunēties.
+
+Output:
+Unit test:
+Ko tu proti?
+Proti, un redzi.
+To dara divreiz dienā, proti, rītā un vakarā.
+To dara divreiz dienā, proti, rītā un vakarā.
+To dara divreiz dienā, proti, rītā un vakarā.
+To dara divreiz dienā, proti, rītā un vakarā.
+Mācīties proti?
+Man nekad nav bijis skaidrs, ko tu tādu proti lai te atrastos.
+Proti kārtīgi kaunēties.
+
+Combined test:
+Ko tu proti?
+Proti, un redzi.
+To dara divreiz dienā, proti, rītā un vakarā.
+To dara divreiz dienā, proti, rītā un vakarā.
+To dara divreiz dienā, proti, rītā un vakarā.
+To dara divreiz dienā, proti, rītā un vakarā.
+Mācīties proti?
+Man nekad nav bijis skaidrs, ko tu tādu proti, lai te atrastos.
+Proti kārtīgi kaunēties.
