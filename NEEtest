@@ -1,0 +1,30 @@
+Input:
+Nē kaķis nav ieradies.
+Pīrāgs, nē kūka.
+Pirāgs nē kūka.
+Gan jā gan nē.
+Nu, jā un nē.
+Jā vai nē.
+Ja padomā nē.
+Ja padomā, tad nē.
+
+Output:
+Unit test:
+Nē, kaķis nav ieradies.
+Pīrāgs, nē, kūka.
+Pirāgs, nē, kūka.
+Gan jā gan nē.
+Nu, jā un nē.
+Jā vai nē.
+Ja padomā, nē.
+Ja padomā, tad nē.
+
+Combined test:
+Nē, kaķis nav ieradies.
+Pīrāgs, nē, kūka.
+Pirāgs, nē, kūka.
+Gan jā, gan nē.
+Nu, jā un nē.
+Jā vai nē.
+Ja padomā, nē.
+Ja padomā, tad nē.
