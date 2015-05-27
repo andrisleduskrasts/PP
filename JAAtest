@@ -1,0 +1,45 @@
+Input:
+Tests, jā, es piekrītu.
+Jā es piekrītu.
+Jā, es piekrītu.
+Tests jā es piekrītu.
+Tests nu jā es piekrītu.
+Nu jā viss ir labi.
+Tests, nu jā viss ir labi.
+Tests, nu jā, viss ir labi.
+Jā gan, viss ir labi.
+Tam jā gan es piekrītu.
+Kas tad būs - jā vai nē?
+Protams ka jā.
+Protams ka karš ir briesmīgs jā gan.
+
+Output:
+Unit test:
+Tests, jā, es piekrītu.
+Jā, es piekrītu.
+Jā, es piekrītu.
+Tests, jā, es piekrītu.
+Tests, nu jā, es piekrītu.
+Nu jā, viss ir labi.
+Tests, nu jā, viss ir labi.
+Tests, nu jā, viss ir labi.
+Jā gan, viss ir labi.
+Tam, jā gan, es piekrītu.
+Kas tad būs - jā vai nē?
+Protams ka jā.
+Protams ka karš ir briesmīgs, jā gan.
+
+Combined test:
+Tests, jā, es piekrītu.
+Jā, es piekrītu.
+Jā, es piekrītu.
+Tests, jā, es piekrītu.
+Tests, nu jā, es piekrītu.
+Nu jā, viss ir labi.
+Tests, nu jā, viss ir labi.
+Tests, nu jā, viss ir labi.
+Jā gan, viss ir labi.
+Tam, jā gan, es piekrītu.
+Kas tad būs - jā vai nē?
+Protams, ka jā.
+Protams, ka karš ir briesmīgs, jā gan.
