@@ -1,0 +1,15 @@
+Input data:
+Šķiet, esmu apmaldījies.
+Šķiet esmu apmaldījies.
+Man šķiet ka esmu apmaldījies.
+
+Output data:
+Unit test:
+Šķiet, esmu apmaldījies.
+Šķiet, esmu apmaldījies.
+Man šķiet ka esmu apmaldījies.
+
+Combined test:
+Šķiet, esmu apmaldījies.
+Šķiet, esmu apmaldījies.
+Man šķiet, ka esmu apmaldījies.
