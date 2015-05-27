@@ -1,0 +1,15 @@
+Input:
+Ja tas netiks nodots līdz 12. tad vari aizmirst par paaugstinājumu.
+Kurš tad to izdarīja?
+Ja nevienam nav komentāru tad redzēsimies nākamreiz un tad parunāsim.
+
+Output:
+Unit test:
+Ja tas netiks nodots līdz 12., tad vari aizmirst par paaugstinājumu.
+Kurš tad to izdarīja?
+Ja nevienam nav komentāru, tad redzēsimies nākamreiz un tad parunāsim.
+
+Combined test:
+Ja tas netiks nodots līdz 12., tad vari aizmirst par paaugstinājumu.
+Kurš tad to izdarīja?
+Ja nevienam nav komentāru, tad redzēsimies nākamreiz un tad parunāsim.
