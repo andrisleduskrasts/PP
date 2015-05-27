@@ -1,0 +1,39 @@
+Input:
+Man nav ar ko iet pastaigāties.
+Ir jāskatās ar ko nodarbojas sabiedrotie.
+Ir jāskatās ar, ko nodarbojas sabiedrotie.
+Ir jāskatās, ar ko nodarbojas sabiedrotie.
+Es atceros ka runāju, tik par ko.
+Šad tad arī ir jāpadomā par ko citu.
+Man ne ko nevajag.
+Atnes man ko garšīgu.
+Es neatceros, ko tu teici.
+Es neatceros ko tu teici.
+Aizmirsi atvainoties, bet ko tad tu teici?
+
+Output:
+Unit test:
+Man nav ar ko iet pastaigāties.
+Ir jāskatās, ar ko nodarbojas sabiedrotie.
+Ir jāskatās ar, ko nodarbojas sabiedrotie.
+Ir jāskatās, ar ko nodarbojas sabiedrotie.
+Es atceros ka runāju, tik par ko.
+Šad tad arī ir jāpadomā par ko citu.
+Man ne ko nevajag.
+Atnes man ko garšīgu.
+Es neatceros, ko tu teici.
+Es neatceros, ko tu teici.
+Aizmirsi atvainoties, bet ko tad tu teici?
+
+Combined test:
+Man nav ar ko iet pastaigāties.
+Ir jāskatās, ar ko nodarbojas sabiedrotie.
+Ir jāskatās ar, ko nodarbojas sabiedrotie.
+Ir jāskatās, ar ko nodarbojas sabiedrotie.
+Es atceros, ka runāju, tik par ko.
+Šad tad arī ir jāpadomā par ko citu.
+Man ne ko nevajag.
+Atnes man ko garšīgu.
+Es neatceros, ko tu teici.
+Es neatceros, ko tu teici.
+Aizmirsi atvainoties, bet ko tad tu teici?
