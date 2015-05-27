@@ -1,0 +1,18 @@
+Input:
+Es zinu ka tu esi mans draugs. 
+Es zinu, ka tu esi mans draugs. 
+Es zinu, ka tu esi mans draugs un ka tu esi mans draugs. 
+Es zinu ka tu esi mans draugs un ka tu esi mans draugs.
+
+Output:
+Unit test:
+Es zinu, ka tu esi mans draugs. 
+Es zinu, ka tu esi mans draugs. 
+Es zinu, ka tu esi mans draugs un ka tu esi mans draugs. 
+Es zinu, ka tu esi mans draugs un ka tu esi mans draugs.
+
+Combined test:
+Es zinu, ka tu esi mans draugs.
+Es zinu, ka tu esi mans draugs.
+Es zinu, ka tu esi mans draugs un ka tu esi mans draugs.
+Es zinu, ka tu esi mans draugs un ka tu esi mans draugs.
