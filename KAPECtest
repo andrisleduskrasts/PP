@@ -1,0 +1,24 @@
+Input:
+Kāpēc viņš to izdarīja?
+Es gribu saprast, kāpēc viņš to izdarīja.
+Es gribu saprast kāpēc viņš to izdarīja.
+Atskatoties kad un kāpēc tas tika darīts.
+Viņš nezin kāpēc bija aizgulējies.
+Viņš nezinot kāpēc bija aizgulējies.
+
+Output:
+Unit test:
+Kāpēc viņš to izdarīja?
+Es gribu saprast, kāpēc viņš to izdarīja.
+Es gribu saprast, kāpēc viņš to izdarīja.
+Atskatoties kad un kāpēc tas tika darīts.
+Viņš nezin kāpēc bija aizgulējies.
+Viņš nezinot, kāpēc bija aizgulējies.
+
+Combined test:
+Kāpēc viņš to izdarīja?
+Es gribu saprast, kāpēc viņš to izdarīja.
+Es gribu saprast, kāpēc viņš to izdarīja.
+Atskatoties, kad un kāpēc tas tika darīts.
+Viņš nezin kāpēc bija aizgulējies.
+Viņš nezinot, kāpēc bija aizgulējies.
