@@ -1,0 +1,27 @@
+Input:
+Es nebiju ieradies, jo autobuss aizkavējās.
+Skatīties nebija vērts un jo sevišķi vakarā.
+Jo ātrāk jo labāk.
+Jo ātrāk, jo labāk.
+Labāk izdari to jo ātrāk jo labāk.
+Tad tam ir vēl jo lielāks iemesls.
+Galvas sāpes u.c. iemesli jo tos nekas nevar paredzēt.
+
+Output:
+Unit test:
+Es nebiju ieradies, jo autobuss aizkavējās.
+Skatīties nebija vērts un jo sevišķi vakarā.
+Jo ātrāk, jo labāk.
+Jo ātrāk, jo labāk.
+Labāk izdari to, jo ātrāk, jo labāk.
+Tad tam ir vēl jo lielāks iemesls.
+Galvas sāpes u.c. iemesli, jo tos nekas nevar paredzēt.
+
+Combined test:
+Es nebiju ieradies, jo autobuss aizkavējās.
+Skatīties nebija vērts un jo sevišķi vakarā.
+Jo ātrāk, jo labāk.
+Jo ātrāk, jo labāk.
+Labāk izdari to, jo ātrāk, jo labāk.
+Tad tam ir vēl jo lielāks iemesls.
+Galvas sāpes u.c. iemesli, jo tos nekas nevar paredzēt.
