@@ -1,0 +1,18 @@
+Input:
+Un kaut arī tāda ir dzīve.
+Es mēģināšu atpazīt kaut gan man nav pārliecības par savām spējām.
+Es mēģināšu atpazīt kaut arī man nav pārliecības par savām spējām.
+Jāredz, kaut arī tas nav viegli.
+
+Output:
+Unit test:
+Un kaut arī tāda ir dzīve.
+Es mēģināšu atpazīt kaut gan man nav pārliecības par savām spējām.
+Es mēģināšu atpazīt, kaut arī man nav pārliecības par savām spējām.
+Jāredz, kaut arī tas nav viegli.
+
+Combined test:
+Un kaut arī tāda ir dzīve.
+Es mēģināšu atpazīt, kaut gan man nav pārliecības par savām spējām.
+Es mēģināšu atpazīt, kaut arī man nav pārliecības par savām spējām.
+Jāredz, kaut arī tas nav viegli.
