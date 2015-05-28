@@ -1,0 +1,18 @@
+Input:
+Respektīvi, divi jauni ierēdņi.
+Respektīvi - divi jauni ierēdņi.
+Respektīvi divi jauni ierēdņi.
+Izvēles tiks veiktas šodien respektīvi pagaidām nav par ko uztraukties.
+
+Output:
+Unit test:
+Respektīvi, divi jauni ierēdņi.
+Respektīvi - divi jauni ierēdņi.
+Respektīvi, divi jauni ierēdņi.
+Izvēles tiks veiktas šodien, respektīvi, pagaidām nav par ko uztraukties.
+
+Combined test:
+Respektīvi, divi jauni ierēdņi.
+Respektīvi - divi jauni ierēdņi.
+Respektīvi, divi jauni ierēdņi.
+Izvēles tiks veiktas šodien, respektīvi, pagaidām nav par ko uztraukties.
