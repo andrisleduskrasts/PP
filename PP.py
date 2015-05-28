@@ -116,17 +116,17 @@ def grammarCheck(sentences):
 def ka(wordlist, number):
 	#check previous punctuation and if its at the start of the sentence
 	if not number == 0:
-		if re.match('.*[,;:-]', wordlist[number-1]):
+		if re.match('.*[,;:—-]', wordlist[number-1]):
 			return wordlist
 		#add exceptions here
 		else:
 			counter = 0
 			while counter < number:
 				#check equal subclauses
-				if re.match('[Kk]a[,-]?$', wordlist[counter]):
+				if re.match('[Kk]a[,-—]?$', wordlist[counter]):
 					temp = counter +1
 					while temp < number:
-						if re.match('un[,-]*?|vai[,-]?$|bet[,-]?$', wordlist[temp]):
+						if re.match('un[,—-]*?|vai[,—-]?$|bet[,-—]?$', wordlist[temp]):
 							return wordlist
 						temp = temp+1
 				counter = counter+1
