@@ -114,65 +114,90 @@ def grammarCheck(sentences):
 #Laws of grammar module
 #"ka" function - first it is tested if there's not a punctuation mark previously, else the grammar law is applied
 def ka(wordlist, number):
-	if re.match('.*[,;:-]', wordlist[number-1]):
-		return wordlist
+	#check previous punctuation and if its at the start of the sentence
+	if not number == 0:
+		if re.match('.*[,;:-]', wordlist[number-1]):
+			return wordlist
+		#add exceptions here
+		else:
+			counter = 0
+			while counter < number:
+				#check equal subclauses
+				if re.match('[Kk]a[,-]?$', wordlist[counter]):
+					temp = counter +1
+					while temp < number:
+						if re.match('un[,-]*?|vai[,-]?$|bet[,-]?$', wordlist[temp]):
+							return wordlist
+						temp = temp+1
+				counter = counter+1
+			wordlist[number-1] = wordlist[number-1] + ','
+			return wordlist
 	else:
-		counter = 0
-		while counter < number:
-			if re.match('[Kk]a[,-]?$', wordlist[counter]):
-				temp = counter +1
-				while temp < number:
-					if re.match('un[,-]*?|vai[,-]?$|bet[,-]?$', wordlist[temp]):
-						return wordlist
-					temp = temp+1
-			counter = counter+1
-		wordlist[number-1] = wordlist[number-1] + ','
 		return wordlist
 #"ja" function
 def ja(wordlist, number):
-	if re.match('.*[,:;-]', wordlist[number-1]):
-		return wordlist
+	#check punctuation and position
+	if not number == 0:
+		if re.match('.*[,:;-]', wordlist[number-1]):
+			return wordlist
+		else:
+			counter = 0
+			#check equal subclauses
+			while counter < number:
+				if re.match('[jJ]a[,-]?$', wordlist[counter]):
+					temp = counter +1
+					while temp < number:
+						if re.match('un[,-]?$|vai[,-]?$|bet[,-]?$', wordlist[temp]):
+							return wordlist
+						temp = temp+1
+				counter = counter+1
+			wordlist[number-1] = wordlist[number-1] + ','
+			return wordlist
+	#add exceptions here
 	else:
-		counter = 0
-		while counter < number:
-			if re.match('[jJ]a[,-]?$', wordlist[counter]):
-				temp = counter +1
-				while temp < number:
-					if re.match('un[,-]?$|vai[,-]?$|bet[,-]?$', wordlist[temp]):
-						return wordlist
-					temp = temp+1
-			counter = counter+1
-		wordlist[number-1] = wordlist[number-1] + ','
 		return wordlist
 #"piemēram" function
 def piemeram(wordlist, number):
-	if re.match('.*[(,;:-]', wordlist[number-1]) or number == 0:
-		if re.match('[pP]iemēram[,.;:]|[pP]iemēram[.][.][.]', wordlist[number]):
-			return wordlist
-		elif re.match('-', wordlist[number+1]):
-			return wordlist
+	#check position and punctuation
+	if not number == 0:
+		#add exceptions here
+		if re.match('.*[(,;:-]', wordlist[number-1]):
+			if re.match('[pP]iemēram[,.;:]|[pP]iemēram[.][.][.]', wordlist[number]):
+				return wordlist
+			elif re.match('-', wordlist[number+1]):
+				return wordlist
+			else:
+				wordlist[number] = wordlist[number] + ','
+				return wordlist
 		else:
-			wordlist[number] = wordlist[number] + ','
-			return wordlist
+			wordlist[number-1] = wordlist[number-1] + ','
+			if re.match('[pP]iemēram[,.;:]|[pP]iemēram[.][.][.]', wordlist[number]):
+				return wordlist
+			elif re.match('-', wordlist[number+1]):
+				return wordlist
+			else:
+				wordlist[number] = wordlist[number] + ','
+				return wordlist
 	else:
-		wordlist[number-1] = wordlist[number-1] + ','
-		if re.match('[pP]iemēram[,.;:]|[pP]iemēram[.][.][.]', wordlist[number]):
-			return wordlist
-		elif re.match('-', wordlist[number+1]):
-			return wordlist
-		else:
-			wordlist[number] = wordlist[number] + ','
-			return wordlist
+		return wordlist
 #"bet" function
 def bet(wordlist, number):
-	if number == 0 or re.match('.*[(,;:-]', wordlist[number-1]):
+	#check if its the first word
+	if number == 0:
 		return wordlist
+	#check previous punctuation
+	if re.match('.*[(,;:-]', wordlist[number-1]):
+		return wordlist
+	#add exceptions here
 	else:
 		wordlist[number-1] = wordlist[number-1] + ','
 		return wordlist
 #"protams" function
 def protams(wordlist, number):
+	#check previous punctuation
+	#add exceptions here
 	if re.match('.*[(,;:-]', wordlist[number-1]) or number == 0:
+		#check after-word punctuation
 		if re.match('[pP]rotams[,.;:]|[pP]rotams[.][.][.]', wordlist[number]):
 			return wordlist
 		elif re.match('-', wordlist[number+1]):
@@ -191,10 +216,13 @@ def protams(wordlist, number):
 			return wordlist
 #"jā" function
 def jaa(wordlist, number):
+	#add exceptions here
+	#check punctuation and exception words
 	if re.match('.*[(,;:-]|[""]?[nN]u,?$|[aA]rī$|[""]?[uU]n$|[""]?[vV]ai$|[""]?[kK]a$|[""]?[jJ]o$|[""]?[bB]et$|[""]?[vV]arbūt$|[""]?[gG]an$|[""]?[tT]ad$|[""]?[kK]ur$|[Kk]uram[,.]?$|[Kk]uriem[,.]?$|[Kk]uru[,.]?$|[Kk]urām[,.]?$|[Kk]urā[,.]?$|[kK]ad[,.]?$|[jJ]au[,.]?$', wordlist[number-1]) or number == 0:
 		if len(wordlist) == 1:
 			return wordlist
 		if number > 0:
+			#check the "nu jā" word structure
 			if re.match('nu$', wordlist[number-1]):
 				if re.match('nu,$', wordlist[number-1]):
 					wordlist[number-1] = wordlist[number-1]
@@ -204,8 +232,10 @@ def jaa(wordlist, number):
 							wordlist[number-2] = wordlist[number-2]
 						else:
 							wordlist[number-2] = wordlist[number-2] + ','
+		#check punctuation after the word
 		if re.match('[(][jJ]ā[,.;:]|[jJ]ā[.][.][.]', wordlist[number]):
 			return wordlist
+		#check for exceptions after the word
 		if len(wordlist) > number + 1:
 			if re.match('-$', wordlist[number+1]):
 				return wordlist
@@ -231,6 +261,7 @@ def jaa(wordlist, number):
 			return wordlist
 		else:
 			return wordlist
+	#similar to previous checkings, only in case of adding the start punctuation marks
 	else:
 		if re.match('.*,', wordlist[number-2]) and re.match('nu$', wordlist[number-1]):
 			wordlist[number-1] = wordlist[number-1]
@@ -265,6 +296,8 @@ def jaa(wordlist, number):
 		return wordlist
 #"nē" function
 def nee(wordlist, number):
+	#check all the exception words and punctuation for previous word punctuation usage
+	#add exceptions here
 	if re.match('.*[(,;:-]|[""]?[nN]u,?$|[""]?[uU]n$|[""]?[vV]ai$|[""]?[kK]a$|[""]?[jJ]o$|[""]?[bB]et$|[""]?[vV]arbūt$|[""]?[gG]an$|[""]?[tT]ad$|[""]?[kK]ur$|[Kk]uram[,.]?$|[Kk]uriem[,.]?$|[Kk]uru[,.]?$|[Kk]urām[,.]?$|[Kk]urā[,.]?$|[kK]ad[,.]?$|[aA]rī[,.]?$|[jJ]au[,.]?$', wordlist[number-1]) or number == 0:
 		if len(wordlist) == 1:
 			return wordlist
@@ -292,8 +325,10 @@ def nee(wordlist, number):
 		return wordlist
 	else:
 		if number > 0:
+			#add the comma
 			if not re.match('.*[,.;:]', wordlist[number-1]) and not re.match('(', wordlist[number]):
 				wordlist[number-1] = wordlist[number-1] + ','
+		#check punctuation and exception words that are after the word.
 		if re.match('[(]?[nN]ē[,.;:]', wordlist[number]):
 			return wordlist
 		if len(wordlist) > number + 1:
@@ -308,12 +343,14 @@ def nee(wordlist, number):
 #"iespējams" function
 def iespejams(wordlist, number):
 	if number == 0:
+		#check if there are -t or -ties words locally
 		if len(wordlist) > 1:
 			if re.match('.*t[,.!?:;]?$|.*ties[,.!?:;]?$|-$', wordlist[number+1]):
 				return wordlist
 		if len(wordlist)>2:
 			if re.match('.*t[,.!?:;]?$|.*ties[,.!?:;]?$', wordlist[number+2]):
 				return wordlist
+		#add exceptions here
 		wordlist[number] = wordlist[number] + ','
 		return wordlist
 	else:
@@ -324,9 +361,12 @@ def gan(wordlist, number):
 		return wordlist
 	counter = 0
 	temp = 0
+	#check "kaut gan" and punctuation
 	if re.match('.*[,:-]$|[kK]aut$', wordlist[number-1]):
 		return wordlist
 	else:
+		#add exceptions here
+		#check if another gan exists, that isn't combined with "gan"
 		while counter < number-1:
 			if re.match('[gG]an[,]?$', wordlist[counter]):
 				if counter > 0:
@@ -341,12 +381,15 @@ def gan(wordlist, number):
 def kur(wordlist, number):
 	if number == 0:
 		return wordlist
+	#check punctuation and exception words
 	if re.match('.*[,;:-]$', wordlist[number-1]):
 		return wordlist
+	#check "kaut kur" and "diez kur", the words are checked for both registers for testing purposes
 	if re.match('[kK][Aa][Uu][Tt]$|[dD][iI][eE][zZ]$', wordlist[number-1]):
 		return wordlist
 	else:
 		counter = 0
+		#check equal subclause possibilities
 		while counter < number:
 			if re.match('[Kk]ur[,-]?$', wordlist[counter]):
 				temp = counter +1
@@ -355,6 +398,7 @@ def kur(wordlist, number):
 						return wordlist
 					temp = temp+1
 			counter = counter+1
+		#check other exception words
 		if re.match('[Uu]n[,-]?$|[Vv]ai[,-]?$|[Bb]et[,-]?$', wordlist[number-1]):
 			return wordlist
 		wordlist[number-1] = wordlist[number-1] + ','
@@ -408,11 +452,14 @@ def jo(wordlist, number):
 	if number == 0 or re.match('.*[(,;:-]', wordlist[number-1]):
 		return wordlist
 	else:
+		#check the exception words
 		if len(wordlist)>number + 1:
 			if re.match('[uU]n$', wordlist[number-1]):
 				return wordlist
+				#check the "vēl jo -āks" word structure
 			elif re.match('[vV]ēl$', wordlist[number-1]) and re.match('.*āk[s]?[,.!?:;-]?', wordlist[number+1]):
 				return wordlist
+			#add exceptions here
 			else:
 				wordlist[number-1] = wordlist[number-1] + ','
 				return wordlist
@@ -422,12 +469,14 @@ def jo(wordlist, number):
 def kad(wordlist, number):
 	if number == 0:
 		return wordlist
+	#check previous token for exceptions and punctuation
 	if re.match('.*[,;:-]$', wordlist[number-1]):
 		return wordlist
 	if re.match('[kK][Aa][Uu][Tt]$', wordlist[number-1]):
 		return wordlist
 	else:
 		counter = 0
+		#check for equal subclauses
 		while counter < number:
 			if re.match('[Kk]ad[,-]?$|[kK]āpēc[,]?$|[kK]o$[,]?$|[kK]ā$[,]?$|[kK]ur$[,]?$|[kK]am$[,]?$', wordlist[counter]):
 				temp = counter +1
@@ -438,23 +487,28 @@ def kad(wordlist, number):
 			counter = counter+1
 		if number == 1 and re.match('Un|Bet', wordlist[number-1]):
 			return wordlist
+		#add exceptions here
 		wordlist[number-1] = wordlist[number-1] + ','
 		return wordlist
 #"tostarp" function
 def tostarp(wordlist, number):
+	#check both punctuation and exception words
 	if number == 0 or re.match('.*[(,;:-]|[Uu]n[,-]?$|[Vv]ai[,-]?$|[Bb]et[,-]?$', wordlist[number-1]):
 		return wordlist
+	#add exceptions here
 	else:
 		wordlist[number-1] = wordlist[number-1] + ','
 		return wordlist
 #"šķiet" function
 def skiet(wordlist, number):
 	if number == 0:
+		#check if it's at the start of the sentence or brackets, as punctuation at the end was already checked before
 		wordlist[number] = wordlist[number] + ','
 		return wordlist
 	elif re.match('(', wordlist[number]):
 		wordlist[number] = wordlist[number] + ','
 		return wordlist
+		#add more exceptions
 	else:
 		return wordlist
 #"ne" function
@@ -462,19 +516,24 @@ def ne(wordlist, number):
 	if number == 0:
 		return wordlist
 	counter = 0
+	#check previous punctuation
 	if re.match('.*[,:-]$', wordlist[number-1]):
 		return wordlist
+	#add more exceptions
 	else:
 		while counter < number:
+			#check if there's another "ne"
 			if re.match('[nN]e[,-]?$', wordlist[counter]):
 				wordlist[number-1] = wordlist[number-1] + ','
 				return wordlist
 			counter = counter+1
+
 	return wordlist
 #"kaut gan" function
 def kautgan(wordlist, number):
 	if number == 0:
 		return wordlist
+	#add exceptions here
 	if re.match('.*[,:-]$', wordlist[number-1]):
 		return wordlist
 	else:
@@ -486,6 +545,8 @@ def kautari(wordlist, number):
 		return wordlist
 	if re.match('.*[,:-]$', wordlist[number-1]):
 		return wordlist
+	#add exceptions here
+	#check if the sentence starts with "un kaut arī"
 	if re.match('[uU]n$', wordlist[number-1]) and number == 1:
 		return wordlist
 	else:
@@ -495,8 +556,10 @@ def kautari(wordlist, number):
 def kapec(wordlist, number):
 	if number == 0:
 		return wordlist
+	#check the exception words
 	if re.match('.*[,;:-]$|[Uu]n$|[Bb]et$|[Tt]ad$|[Vv]ai$|[Nn]ezin$', wordlist[number-1]):
 		return wordlist
+	#add exceptions here
 	else:
 		wordlist[number-1] = wordlist[number-1] + ','
 		return wordlist
@@ -504,8 +567,10 @@ def kapec(wordlist, number):
 def cik(wordlist, number):
 	if number == 0:
 		return wordlist
+	#check all the excepton words
 	if re.match('.*[,;:-]$|[Uu]n$|[Bb]et$|[Tt]ad$|[Vv]ai$|[Nn]ezin$|[Jj]o$|[Pp]ar$|[Uu]z$|[Zz]em$|[Vv]irs$|[Pp]ie$|[Nn]ezin$', wordlist[number-1]):
 		return wordlist
+	#add exceptions here
 	if number > 1:
 		if re.match('arī$', wordlist[number-1]) and re.match('[lL]ai$', wordlist[number-2]):
 			return wordlist
@@ -657,7 +722,7 @@ def respektivi(wordlist, number):
 
 #Interface module
 #specify the input file
-inFile = open('testi/testrespektivi.txt', 'r')
+inFile = open('testi/testin.txt', 'r')
 data = loadtext(inFile)
 inFile.close()
 #Split data into sentences using the sentences textsplitter() function
