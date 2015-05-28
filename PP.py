@@ -55,17 +55,17 @@ def grammarCheck(sentences):
 				wordlist = ka(wordlist, counter)
 			if re.match('ja[,]?$|ja[.][.][.]', word):
 				wordlist = ja(wordlist, counter)
-			if re.match('[pP]iemēram[,.?!]?$|piemēram[.][.][.]', word):
+			if re.match('[(]?[pP]iemēram[,.?!]?$|piemēram[.][.][.]', word):
 				wordlist = piemeram(wordlist, counter)
 			if re.match('bet[.,?!]?$|bet[.][.][.]', word):
 				wordlist = bet(wordlist, counter)
-			if re.match('[pP]rotams[.,?!]?$|protams[.][.][.]', word):
+			if re.match('[(]?[pP]rotams[.,?!]?$|protams[.][.][.]', word):
 				wordlist = protams(wordlist, counter)
-			if re.match('[jJ]ā[.,?!]?$|jā[.][.][.]', word):
+			if re.match('[(]?[jJ]ā[.,?!]?$|jā[.][.][.]', word):
 				wordlist = jaa(wordlist, counter)
-			if re.match('[nN]ē[.,?!]?$|nē[.][.][.]', word):
+			if re.match('[(]?[nN]ē[.,?!]?$|nē[.][.][.]', word):
 				wordlist = nee(wordlist, counter)
-			if re.match('Iespējams$', word):
+			if re.match('[(]?Iespējams$', word):
 				wordlist = iespejams(wordlist, counter)
 			if re.match('gan[,.?!]?$|gan[.][.][.]', word):
 				wordlist = gan(wordlist, counter)
@@ -79,7 +79,7 @@ def grammarCheck(sentences):
 				wordlist = kad(wordlist, counter)
 			if re.match('tostarp[,.?]?$|tostarp[.][.][.]', word):
 				wordlist = tostarp(wordlist, counter)
-			if re.match('[Šš]ķiet$', word):
+			if re.match('[(][Šš]ķiet$', word):
 				wordlist = skiet(wordlist, counter)
 			if re.match('ne[,.?!]?$|ne[.][.][.]', word):
 				wordlist = ne(wordlist, counter)
@@ -93,7 +93,20 @@ def grammarCheck(sentences):
 				wordlist = kapec(wordlist, counter)
 			if re.match('cik[,.:?!?]?$|cik[.][.][.]', word):
 				wordlist = cik(wordlist, counter)
-
+			if re.match('kā$', word):
+				if len(wordlist) > counter + 1:
+					if re.match('arī[,.!?]?$|arī[.][.][.]', wordlist[counter+1]):
+						wordlist = kaaarii(wordlist, counter)
+			if re.match('[(]?[Pp]roti[,:;""'']?[.]?[.]?$', word):
+				wordlist = proti(wordlist, counter)
+			if re.match('tad[.,:;""'']?[.]?[.]?$', word):
+				wordlist = tad(wordlist, counter)
+			if re.match('ko[.,:;""'']?[.]?[.]?$', word):
+				wordlist = ko(wordlist, counter)
+			if re.match('nevis[.,:;"'']?[.]?[.]?$', word):
+				wordlist = nevis(wordlist, counter)
+			if re.match('[rR]espektīvi[.,:;"'']?[.]?[.]?$', word):
+				wordlist = respektivi(wordlist, counter)
 		#result is changed back into sentence for later return
 		sentences[sentencecounter] = " ".join(word for word in wordlist)
 	return sentences
@@ -191,7 +204,7 @@ def jaa(wordlist, number):
 							wordlist[number-2] = wordlist[number-2]
 						else:
 							wordlist[number-2] = wordlist[number-2] + ','
-		if re.match('[jJ]ā[,.;:]|[jJ]ā[.][.][.]', wordlist[number]):
+		if re.match('[(][jJ]ā[,.;:]|[jJ]ā[.][.][.]', wordlist[number]):
 			return wordlist
 		if len(wordlist) > number + 1:
 			if re.match('-$', wordlist[number+1]):
@@ -222,8 +235,9 @@ def jaa(wordlist, number):
 		if re.match('.*,', wordlist[number-2]) and re.match('nu$', wordlist[number-1]):
 			wordlist[number-1] = wordlist[number-1]
 		else:
-			wordlist[number-1] = wordlist[number-1] + ','
-		if re.match('[jJ]ā[,.;:]', wordlist[number]):
+			if not re.match('(', wordlist[number]):
+				wordlist[number-1] = wordlist[number-1] + ','
+		if re.match('[(][jJ]ā[,.;:]', wordlist[number]):
 			return wordlist
 		if len(wordlist) > number + 1:
 			if re.match('-', wordlist[number+1]):
@@ -264,7 +278,7 @@ def nee(wordlist, number):
 							wordlist[number-2] = wordlist[number-2]
 						else:
 							wordlist[number-2] = wordlist[number-2] + ','
-		if re.match('[nN]ē[,.;:]|[nN]ē[.][.][.]', wordlist[number]):
+		if re.match('[(]?[nN]ē[,.;:]|[(]?[nN]ē[.][.][.]', wordlist[number]):
 			return wordlist
 		if len(wordlist) > number + 1:
 			#check if there are after-word exceptions "un" , "vai"
@@ -278,9 +292,9 @@ def nee(wordlist, number):
 		return wordlist
 	else:
 		if number > 0:
-			if not re.match('.*[,.;:]', wordlist[number-1]):
+			if not re.match('.*[,.;:]', wordlist[number-1]) and not re.match('(', wordlist[number]):
 				wordlist[number-1] = wordlist[number-1] + ','
-		if re.match('[nN]ē[,.;:]', wordlist[number]):
+		if re.match('[(]?[nN]ē[,.;:]', wordlist[number]):
 			return wordlist
 		if len(wordlist) > number + 1:
 			if re.match('-', wordlist[number+1]):
@@ -438,6 +452,9 @@ def skiet(wordlist, number):
 	if number == 0:
 		wordlist[number] = wordlist[number] + ','
 		return wordlist
+	elif re.match('(', wordlist[number]):
+		wordlist[number] = wordlist[number] + ','
+		return wordlist
 	else:
 		return wordlist
 #"ne" function
@@ -494,10 +511,153 @@ def cik(wordlist, number):
 			return wordlist
 	wordlist[number-1] = wordlist[number-1] + ','
 	return wordlist
+#"kā arī" function
+def kaaarii(wordlist, number):
+	#If "kā" is in the begining of sentence or the previous word has punctuation marks at the end of it, return it
+	if number == 0 or re.match('.*[(,;:-]', wordlist[number-1]):
+		return wordlist
+	#if the previous word is one of the exceptions, try to put comma before them instead, if that's adequate
+	if re.match('[lL]ai$|[Nn]o$|[Uu]z$', wordlist[number-1]):
+		if number > 1:
+			if not re.match('.*[(,;:-]', wordlist[number-2]):
+				wordlist[number-2] = wordlist[number-2] + ','
+				return wordlist
+			else:
+				return wordlist
+		return wordlist
+	#Add other exceptions here
+	#if no exceptions are met, put comma in default position and return the sentece
+	else:
+		wordlist[number-1] = wordlist[number-1] + ','
+		return wordlist
+#"proti" function
+def proti (wordlist, number):
+	counter = 0
+	#check if there's an "-t/-ties" word after it in a short sentence
+	if len(wordlist) > 1 and len(wordlist) < 6:
+		while counter < len(wordlist):
+			if re.match('.*t[,.?!:""]?[.]?[.]?$|.*ties[,.?!:""]?[.]?[.]?$', wordlist[counter]):
+				return wordlist
+			counter = counter + 1
+	#if that is not the case, test if there's the word "tu" before it.
+	elif len(wordlist) > 5:
+		if number > 0:
+			while counter < number:
+				if re.match('[tT]u[.,]?[.]?[.]?$', wordlist[counter]):
+					return wordlist
+				counter = counter + 1
+	#check if "proti" is the last word, in which case it is unlikely to be an insertion
+	if len(wordlist) == number + 1:
+		return wordlist
+	#check if punctuation on either sides and if "proti" is the first word of the sentence
+	if number != 0:
+		if re.match('.*[(,.:;-]$', wordlist[number-1]):
+			if len(wordlist) > number + 1 and not re.match('.*[,.:;)""]', wordlist[number]):
+				wordlist[number] = wordlist[number] + ','
+			return wordlist
+	#Add more exceptions here
+		else:
+			wordlist[number-1] = wordlist[number-1] + ','
+			if len(wordlist) > number + 1 and not re.match('.*[,.:;)""]', wordlist[number]):
+				if not re.match('-', wordlist[number+1]):
+					wordlist[number] = wordlist[number] + ','
+				return wordlist
+
+			else:
+				return wordlist
+	else:
+		if not re.match('.*[,.:;)""]', wordlist[number]):
+			wordlist[number] = wordlist[number] + ','
+			return wordlist
+#"tad" function
+def tad(wordlist, number):
+	if number == 0:
+		return wordlist
+	else:
+		#check if the previous word has punctuation marks already or it's one of the exception words
+		if not re.match('.*[)(,:;]$|.*[.][.][.]$|[("]?[uU]n$|[("]?[bB]et$|[("]?[tT]aču$|[("]?[tT]omēr$', wordlist[number-1]):
+			counter = 0
+			#add more exceptions here
+			if number > 1:
+				#check if "ja" or "kad" are present
+				while counter < number:
+					if re.match('[jJ]a[,.]?[.]?[.]?$|[kK]ad[,.]?[.]?[.]?$', wordlist[counter]):
+						wordlist[number-1] = wordlist[number-1] + ','
+						return wordlist
+					counter = counter + 1
+			return wordlist
+		else:
+			return wordlist	
+#"ko", "ar ko" and "par ko" function
+def ko(wordlist, number):
+	if number == 0:
+		return wordlist
+	if number > 0:
+		#check the "ar ko" and "par ko" word laws
+		if re.match('[aA]r$|[pP]ar$', wordlist[number-1]):
+			if number == 1:
+				return wordlist
+			else:
+				#check their exception words both before and after
+				if not re.match('.*[,:;-]$|[(]?[uU]n$|[bB]et$|[vV]ai$|[nN]e$|[nN]av$|[iI]r$|[tT]ik$', wordlist[number-2]):
+					if len(wordlist) > number+1:
+						if not re.match('citu[),.:;!?]$', wordlist[number+1]):
+							wordlist[number-2] = wordlist[number-2] + ','
+						return wordlist
+					else:
+						wordlist[number-2] = wordlist[number-2] + ','
+				else:
+					return wordlist
+		#check if exception words are before it
+		elif not re.match('.*[,:;-]$|[dD]audz$|[kK]aut$|[lL]ai$|[tT]ad$|[uU]z$|[nN]e$|[uU]n$|[bB]et$|[vV]ai$', wordlist[number-1]):
+			#check if exception words are after it
+			if len(wordlist) > number + 1:
+				if re.match('.*u[).,:;""]$', wordlist[number+1]):
+					return wordlist
+				else:
+					wordlist[number-1] = wordlist[number-1] + ','
+		#add more exceptions here
+		return wordlist
+#"nevis" function
+def nevis(wordlist, number):
+	if not number == 0:
+		#test for exception words before the word
+		if not re.match('.*[(,:;-]$|[(]?[uU]n$|[(]?[bB]et$', wordlist[number-1]):
+			if len(wordlist) > number + 1:
+				counter = number
+				#check for "bet" existence after "nevis"
+				while counter+1 < len(wordlist):
+					if re.match('bet[,.:-]?', wordlist[counter]):
+						return wordlist
+					counter = counter + 1 
+			#add new exceptions here
+			wordlist[number-1] = wordlist[number-1] + ','
+			return wordlist
+		else:
+			return wordlist
+		return wordlist
+	else:
+		return wordlist
+#"respektīvi" function
+def respektivi(wordlist, number):
+	if not number == 0:
+		#add exceptions here
+		#check if there arent punctuation marks before or after the word, in which case put the commas
+		if not re.match('.*[(,:;-]$', wordlist[number-1]):
+			wordlist[number-1] = wordlist[number-1] + ','
+		if len(wordlist) > number+1:
+			if not re.match('.*[)(,:;-]$', wordlist[number]) and not re.match('-', wordlist[number+1]):
+				wordlist[number] = wordlist[number] + ','
+	else:
+		if len(wordlist) > number+1:
+			if not re.match('.*[)(,:;-]$', wordlist[number]) and not re.match('-', wordlist[number+1]):
+				wordlist[number] = wordlist[number] + ','
+	return wordlist
+
 
 #Interface module
 #specify the input file
-inFile = open('testi/testtostarp.txt', 'r')
+inFile = open('testi/testrespektivi.txt', 'r')
 data = loadtext(inFile)
 inFile.close()
 #Split data into sentences using the sentences textsplitter() function
