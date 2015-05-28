@@ -132,6 +132,7 @@ def ka(wordlist, number):
 				counter = counter+1
 			wordlist[number-1] = wordlist[number-1] + ','
 			return wordlist
+		return wordlist
 	else:
 		return wordlist
 #"ja" function
@@ -173,7 +174,7 @@ def piemeram(wordlist, number):
 			wordlist[number-1] = wordlist[number-1] + ','
 			if re.match('[pP]iemēram[,.;:]|[pP]iemēram[.][.][.]', wordlist[number]):
 				return wordlist
-			elif re.match('-', wordlist[number+1]):
+			elif re.match('[-—]', wordlist[number+1]):
 				return wordlist
 			else:
 				wordlist[number] = wordlist[number] + ','
@@ -218,7 +219,7 @@ def protams(wordlist, number):
 def jaa(wordlist, number):
 	#add exceptions here
 	#check punctuation and exception words
-	if re.match('.*[(,;:-—]|[""]?[nN]u,?$|[aA]rī$|[""]?[uU]n$|[""]?[vV]ai$|[""]?[kK]a$|[""]?[jJ]o$|[""]?[bB]et$|[""]?[vV]arbūt$|[""]?[gG]an$|[""]?[tT]ad$|[""]?[kK]ur$|[Kk]uram[,.]?$|[Kk]uriem[,.]?$|[Kk]uru[,.]?$|[Kk]urām[,.]?$|[Kk]urā[,.]?$|[kK]ad[,.]?$|[jJ]au[,.]?$', wordlist[number-1]) or number == 0:
+	if re.match('.*[,;:-—-]|[""]?[nN]u,?$|[aA]rī$|[""]?[uU]n$|[""]?[vV]ai$|[""]?[kK]a$|[""]?[jJ]o$|[""]?[bB]et$|[""]?[vV]arbūt$|[""]?[gG]an$|[""]?[tT]ad$|[""]?[kK]ur$|[Kk]uram[,.]?$|[Kk]uriem[,.]?$|[Kk]uru[,.]?$|[Kk]urām[,.]?$|[Kk]urā[,.]?$|[kK]ad[,.]?$|[jJ]au[,.]?$', wordlist[number-1]) or number == 0:
 		if len(wordlist) == 1:
 			return wordlist
 		if number > 0:
@@ -233,11 +234,11 @@ def jaa(wordlist, number):
 						else:
 							wordlist[number-2] = wordlist[number-2] + ','
 		#check punctuation after the word
-		if re.match('[(][jJ]ā[,.;:]|[jJ]ā[.][.][.]', wordlist[number]):
+		if re.match('[(]?[jJ]ā[,.;:""]|[jJ]ā[.][.][.]', wordlist[number]):
 			return wordlist
 		#check for exceptions after the word
 		if len(wordlist) > number + 1:
-			if re.match('-$', wordlist[number+1]):
+			if re.match('[-—]', wordlist[number+1]):
 				return wordlist
 			if re.match('[uU]n$|[vV]ai$', wordlist[number+1]):
 				return wordlist
@@ -245,7 +246,7 @@ def jaa(wordlist, number):
 				if re.match('[gG]an[—-,.!?""'']', wordlist[number+1]):
 					return wordlist
 				elif len(wordlist) > number + 2:
-					if re.match('-—', wordlist[number+2]):
+					if re.match('[-—]', wordlist[number+2]):
 						return wordlist
 				if number > 0:
 					if re.match('[""]?[gG]an$', wordlist[number-1]):
@@ -266,7 +267,7 @@ def jaa(wordlist, number):
 		if re.match('.*,', wordlist[number-2]) and re.match('nu$', wordlist[number-1]):
 			wordlist[number-1] = wordlist[number-1]
 		else:
-			if not re.match('(', wordlist[number]):
+			if not re.match('\(', wordlist[number]):
 				wordlist[number-1] = wordlist[number-1] + ','
 		if re.match('[(][jJ]ā[,.;:]', wordlist[number]):
 			return wordlist
@@ -294,11 +295,12 @@ def jaa(wordlist, number):
 			wordlist[number] = wordlist[number] + ','
 			return wordlist
 		return wordlist
+	return wordlist
 #"nē" function
 def nee(wordlist, number):
 	#check all the exception words and punctuation for previous word punctuation usage
 	#add exceptions here
-	if re.match('.*[(,;:-—]|[""]?[nN]u,?$|[""]?[uU]n$|[""]?[vV]ai$|[""]?[kK]a$|[""]?[jJ]o$|[""]?[bB]et$|[""]?[vV]arbūt$|[""]?[gG]an$|[""]?[tT]ad$|[""]?[kK]ur$|[Kk]uram[,.]?$|[Kk]uriem[,.]?$|[Kk]uru[,.]?$|[Kk]urām[,.]?$|[Kk]urā[,.]?$|[kK]ad[,.]?$|[aA]rī[,.]?$|[jJ]au[,.]?$', wordlist[number-1]) or number == 0:
+	if re.match('.*[(,;:-—-]|[""]?[nN]u,?$|[""]?[uU]n$|[""]?[vV]ai$|[""]?[kK]a$|[""]?[jJ]o$|[""]?[bB]et$|[""]?[vV]arbūt$|[""]?[gG]an$|[""]?[tT]ad$|[""]?[kK]ur$|[Kk]uram[,.]?$|[Kk]uriem[,.]?$|[Kk]uru[,.]?$|[Kk]urām[,.]?$|[Kk]urā[,.]?$|[kK]ad[,.]?$|[aA]rī[,.]?$|[jJ]au[,.]?$', wordlist[number-1]) or number == 0:
 		if len(wordlist) == 1:
 			return wordlist
 		if number > 0:
@@ -326,7 +328,7 @@ def nee(wordlist, number):
 	else:
 		if number > 0:
 			#add the comma
-			if not re.match('.*[,.;:]', wordlist[number-1]) and not re.match('(', wordlist[number]):
+			if not re.match('.*[,.;:]', wordlist[number-1]) and not re.match('\(', wordlist[number]):
 				wordlist[number-1] = wordlist[number-1] + ','
 		#check punctuation and exception words that are after the word.
 		if re.match('[(]?[nN]ē[,.;:]', wordlist[number]):
@@ -340,6 +342,7 @@ def nee(wordlist, number):
 				wordlist[number] = wordlist[number] + ','
 				return wordlist
 		return wordlist
+	return wordlist
 #"iespējams" function
 def iespejams(wordlist, number):
 	if number == 0:
@@ -671,6 +674,7 @@ def ko(wordlist, number):
 						return wordlist
 					else:
 						wordlist[number-2] = wordlist[number-2] + ','
+						return wordlist
 				else:
 					return wordlist
 		#check if exception words are before it
@@ -681,6 +685,7 @@ def ko(wordlist, number):
 					return wordlist
 				else:
 					wordlist[number-1] = wordlist[number-1] + ','
+					return wordlist
 		#add more exceptions here
 		return wordlist
 #"nevis" function
