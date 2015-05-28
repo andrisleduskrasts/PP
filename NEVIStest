@@ -1,0 +1,15 @@
+Input:
+Man vajag jaunas iespējas, nevis apmazgātas vecās.
+Man vajag jaunas iespējas nevis apazgātas vecās.
+Divas reizes ir nevis labs bet slikts rezultāts.
+
+Output:
+Unit test:
+Man vajag jaunas iespējas, nevis apmazgātas vecās.
+Man vajag jaunas iespējas, nevis apazgātas vecās.
+Divas reizes ir nevis labs bet slikts rezultāts.
+
+Combined test:
+Man vajag jaunas iespējas, nevis apmazgātas vecās.
+Man vajag jaunas iespējas, nevis apazgātas vecās.
+Divas reizes ir nevis labs, bet slikts rezultāts.
