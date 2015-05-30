@@ -30,7 +30,8 @@ def loadtextNC(inFile):
 
 #Text splitting module
 def textsplitter(content):
-	sentences = re.findall('.*?[A-Za-z0-9āčēģīķļņšūž][.!?][][!""''()*+,.;<=>?@\^_{|}~-]*?\s?|.*?[.?!]+[^.]|.*?[.?!]+$|.*?$', content)
+	sentences = re.findall('.*?[A-Za-z0-9āčēģīķļņšūž][.!?][][!""''()*+,.;<=>?@\^_{|}~-]*?\s?|\
+	.*?[.?!]+[^.]|.*?[.?!]+$|.*?$', content)
 	#The current regex also splits situations like "tas utt. ļāva un 1997. gadā"
 	counter = 0
 	while counter + 1 < len(sentences):
