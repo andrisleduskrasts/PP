@@ -1,3 +1,4 @@
+import re
 #Grammar module - sentence checker and law function calls
 def grammarCheck(sentences):
 	for sentencecounter, sentence in enumerate(sentences):
@@ -695,9 +696,7 @@ sentences = textsplitter.textsplitter(data)
 #specify the output file
 outFile = open('testi/testout.txt', 'w')
 
-import grammar
-
-result = grammar.grammarCheck(sentences)
+result = grammarCheck(sentences)
 textload.writetext(result, outFile)
 outFile.close()
 
