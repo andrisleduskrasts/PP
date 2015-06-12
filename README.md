@@ -14,4 +14,6 @@ All 3 files (PP.py, textsplitter.py and textload.py) have to be located in the s
 The default task is to accept the input text and add commas if neccesary. This means that a sentence with correct punctuation will most likely be unchanged.
 To change the task, comment the loadtext() line with a #: "#data = ..."; and uncomment the other line by removing the #: data = textload.loadtextNC to remove commas and have only the tool put them in the output.
 
+Rule list: https://docs.google.com/document/d/1EVI_PqPjdKnTLOqalh3-Ci9aIC-tRd8VRT7OQaC3C84/edit
+
 Andris Leduskrasts, 2015
