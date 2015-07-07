@@ -1,0 +1,25 @@
+Syntax to describe a rule in likumi.txt
+#################################################################
+Description:
+Nr = number of the word rule, used for quality-of-life purposes
+word = the word in question
+b = before/2 - comma is placed 2 tokens before the word
+a = after/0 - comma is placed right after the word (same as a)
+NT/T: = exceptions are not fulfilled (Not True) or fulfilled (True) respectivelly
+i[]..., b[]...., a[].... = exceptions
+i[0] = the 0 position of the word itself, usually used for checking letter case
+i[0]==W = the 0 position of the word itself is the capital "W"
+b[1] = the first token behind the word in question
+a[2] = the second token after the word in question
+#################################################################
+Example - 32nd/33rd rule, "word", comma has to be put 2 words before the word and right after it, unless:
+it starts with capital letter W
+previous is a punctuation mark
+the 2nd token after the word is "another"
+#################################################################
+32 word b/2 NT:
+i[0]==W
+b[1]==[!\"#$%&\'()*+,\-./:;<=>?@[\\\]^_\`{|}~]
+a[2]==another
+33 word a NT:
+a[1]==[!\"#$%&\'()*+,\-./:;<=>?@[\\\]^_\`{|}~]
